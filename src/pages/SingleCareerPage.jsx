@@ -228,7 +228,7 @@ const SingleCareerPage = () => {
         <div className="absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl">
           <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#a7f3d0] to-[#38bdf8] opacity-10 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
         </div>
-        <div className="w-full lg:w-[70%] mx-auto px-6">
+        <div className="w-full lg:w-[60%] mx-auto px-6">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -267,7 +267,7 @@ const SingleCareerPage = () => {
         </div>
       </div>
 
-      <div className="w-full lg:w-[70%] mx-auto px-6 py-16 md:py-24">
+      <div className="w-full lg:w-[60%] mx-auto px-6 py-16 md:py-24">
         <motion.div
           initial="hidden"
           whileInView="visible"

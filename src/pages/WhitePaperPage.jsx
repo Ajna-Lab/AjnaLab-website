@@ -62,7 +62,7 @@ const WhitePaperPage = () => {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="w-full lg:w-[70%] mx-auto px-6 text-center"
+          className="w-full lg:w-[60%] mx-auto px-6 text-center"
         >
           <motion.div
             variants={itemVariants}
@@ -88,7 +88,7 @@ const WhitePaperPage = () => {
       </div>
 
       <div className="py-24 sm:py-32">
-        <div className="w-full lg:w-[70%] mx-auto px-6">
+        <div className="w-full lg:w-[60%] mx-auto px-6">
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-8"
             initial="hidden"
@@ -129,7 +129,7 @@ const WhitePaperPage = () => {
       </div>
 
       <div className="bg-white py-20 sm:py-24">
-        <div className="w-full lg:w-[70%] mx-auto px-6 text-center">
+        <div className="w-full lg:w-[60%] mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

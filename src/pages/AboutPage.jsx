@@ -141,7 +141,7 @@ const Section = ({ children, className = '' }) => (
     viewport={{ once: true, amount: 0.2 }}
     variants={containerVariants}
   >
-    <div className="w-full lg:w-[70%] mx-auto px-6">{children}</div>
+    <div className="w-full lg:w-[60%] mx-auto px-6">{children}</div>
   </motion.section>
 )
 
@@ -211,7 +211,7 @@ const AboutPage = () => {
         <div className="absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl">
           <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#d8b4fe] to-[#818cf8] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
         </div>
-        <div className="container md:w-[70%] mx-auto px-6">
+        <div className="container md:w-[60%] mx-auto px-6">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -318,7 +318,7 @@ const AboutPage = () => {
           The Story of Ajna Lab
         </motion.h2>
         <motion.p
-          className="text-center text-sm text-slate-600 leading-relaxed my-4 w-[70%] mx-auto"
+          className="text-center text-sm text-slate-600 leading-relaxed my-4 w-[60%] mx-auto"
           variants={itemVariants}
         >
           After identifying a critical need for integrated healthcare technology

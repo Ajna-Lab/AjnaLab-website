@@ -154,7 +154,7 @@ const Header = () => {
           className={`transition-all duration-500 ease-in-out ${
             isScrolled
               ? 'w-full rounded-none bg-white/80 backdrop-blur-lg shadow-md'
-              : 'w-11/12 lg:w-[70%] rounded-full bg-white/60 backdrop-blur-xl shadow-lg'
+              : 'w-11/12 lg:w-[60%] rounded-full bg-white/60 backdrop-blur-xl shadow-lg'
           }`}
         >
           <nav className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">

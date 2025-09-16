@@ -22,6 +22,7 @@ import 'swiper/css/pagination'
 
 import MainImg from '../assets/homepagedoctor.jpg'
 import LogoImg from '../assets/logo.png'
+import AboutImg from '../assets/adobe.png'
 import underline from '../assets/one.png'
 import CurveLine from '../assets/curve-blue.png'
 import { Link } from 'react-router-dom'
@@ -275,7 +276,7 @@ const SolutionSection = ({ solution }) => {
       >
         <div className="absolute inset-0 bg-black/50" />
       </div>
-      <div className="w-full lg:w-[70%] mx-auto px-8 max-w-7xl relative z-10">
+      <div className="w-full lg:w-[60%] mx-auto px-8 max-w-7xl relative z-10">
         <motion.div
           className="max-w-3xl text-white"
           initial={{ opacity: 0, x: -100 }}
@@ -377,7 +378,7 @@ const HomePage = () => {
           />
           <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,rgba(67,56,202,0.15),transparent_80%)]"></div>
 
-          <div className="w-full lg:w-[70%] mx-auto px-6 py-24 relative z-10">
+          <div className="w-full lg:w-[60%] mx-auto px-6 py-24 relative z-10">
             <motion.div
               className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
               variants={containerVariants}
@@ -478,7 +479,7 @@ const HomePage = () => {
 
         {/* About Ajna (Philosophy Highlight) */}
         <div className="bg-slate-50 py-24 sm:py-32 overflow-hidden">
-          <div className="w-full lg:w-[70%] mx-auto px-6">
+          <div className="w-full lg:w-[60%] mx-auto px-6">
             <motion.div
               className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
               initial="hidden"
@@ -502,9 +503,9 @@ const HomePage = () => {
                   }}
                 >
                   <img
-                    src={LogoImg}
+                    src={AboutImg}
                     alt="Ajna Lab Logo"
-                    className="relative z-10 w-full max-w-sm mx-auto rounded-lg"
+                    className="relative z-10 w-full object-fill max-w-sm mx-auto rounded-lg"
                   />
                 </motion.div>
               </motion.div>
@@ -573,7 +574,7 @@ const HomePage = () => {
               From Ideas to Impact
             </p>
           </div>
-          <div className="w-full lg:w-[70%] my-16 mx-auto relative px-8">
+          <div className="w-full lg:w-[60%] my-16 mx-auto relative px-8">
             <div className="absolute inset-0 flex justify-center items-center">
               <img
                 src={CurveLine}
@@ -618,7 +619,7 @@ const HomePage = () => {
         </div>
 
         <div className="bg-slate-50 py-24 sm:py-32 overflow-hidden">
-          <div className="w-full lg:w-[70%] mx-auto px-6">
+          <div className="w-full lg:w-[60%] mx-auto px-6">
             <motion.div
               className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
               initial="hidden"
@@ -705,7 +706,7 @@ const HomePage = () => {
 
         {/* Vision & Values */}
         <div className="bg-slate-50 py-24 sm:py-32">
-          <div className="w-full lg:w-[70%] mx-auto px-6">
+          <div className="w-full lg:w-[60%] mx-auto px-6">
             <motion.div
               className="text-center max-w-4xl mx-auto"
               initial="hidden"
@@ -764,7 +765,7 @@ const HomePage = () => {
 
         {/* Testimonials */}
         <div className="bg-slate-50 py-24 sm:py-32">
-          <div className="w-full lg:w-[70%] mx-auto px-6">
+          <div className="w-full lg:w-[60%] mx-auto px-6">
             <motion.div
               className="text-center max-w-3xl mx-auto"
               initial="hidden"
@@ -869,7 +870,7 @@ const HomePage = () => {
         </div>
 
         <div className="bg-white py-24 sm:py-32">
-          <div className="w-full lg:w-[70%] mx-auto px-6">
+          <div className="w-full lg:w-[60%] mx-auto px-6">
             <motion.div
               className="text-center max-w-3xl mx-auto"
               initial="hidden"
@@ -970,7 +971,7 @@ const HomePage = () => {
         <div className="relative bg-slate-900 py-24 sm:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-grid-slate-700/10 [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
 
-          <div className="w-full lg:w-[70%] mx-auto px-6 text-center relative z-10">
+          <div className="w-full lg:w-[60%] mx-auto px-6 text-center relative z-10">
             <motion.div
               className="max-w-4xl mx-auto"
               initial="hidden"
