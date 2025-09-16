@@ -234,7 +234,7 @@ const gallery = [
 ]
 
 const ValueCard = ({ number, title, text, theme, icon: Icon }) => (
-  <div className="relative w-full max-w-sm mx-auto">
+  <div className="relative w-full h-[450px] max-w-sm mx-auto">
     <div className={`absolute -translate-x-1/2 -top-7 left-1/4 z-40`}>
       <div
         className={`w-15 h-15 rounded-full border-4 flex items-center justify-center text-lg font-semibold ${theme.borderColor} ${theme.bgColor} ${theme.textColor}`}
@@ -316,21 +316,17 @@ const SolutionSection = ({ solution }) => {
 const HomePage = () => {
   const [selectedImage, setSelectedImage] = useState(null)
 
-  // --- NEW: Refs for auto-scrolling logic ---
   const solutionsContainerRef = useRef(null)
   const isScrolling = useRef(false)
   const currentSolutionIndex = useRef(0)
 
-  // --- NEW: useEffect to handle the scroll logic ---
   useEffect(() => {
     const container = solutionsContainerRef.current
     if (!container) return
 
     const handleWheel = event => {
-      // Prevent default scroll behavior to avoid jitter
       event.preventDefault()
 
-      // If an auto-scroll is already happening, do nothing
       if (isScrolling.current) return
 
       const scrollDown = event.deltaY > 0
@@ -563,8 +559,8 @@ const HomePage = () => {
         </div>
 
         {/* Why Ajna Lab? */}
-        <div className="py-24 my-10 bg-white">
-          <div className="mb-16">
+        <div className="py-24  bg-white">
+          <div className="my-16">
             <h1 className="text-7xl font-bold text-gray-800 text-center">
               Why{' '}
               <span
@@ -577,7 +573,7 @@ const HomePage = () => {
               From Ideas to Impact
             </p>
           </div>
-          <div className="w-full lg:w-[70%] mx-auto relative px-8">
+          <div className="w-full lg:w-[70%] my-16 mx-auto relative px-8">
             <div className="absolute inset-0 flex justify-center items-center">
               <img
                 src={CurveLine}
@@ -612,17 +608,15 @@ const HomePage = () => {
           </div>
         </div>
 
-        {/* --- MODIFIED: Our Solutions with auto-scroll --- */}
         <div
-          ref={solutionsContainerRef} // NEW: Attach the ref here
-          className="h-screen w-full overflow-y-scroll" // MODIFIED: snap properties removed to allow smooth scrolling
+          ref={solutionsContainerRef}
+          className="h-screen w-full overflow-y-scroll"
         >
           {solutions.map(solution => (
             <SolutionSection key={solution.id} solution={solution} />
           ))}
         </div>
 
-        {/* --- All sections after "Our Solutions" remain unchanged --- */}
         <div className="bg-slate-50 py-24 sm:py-32 overflow-hidden">
           <div className="w-full lg:w-[70%] mx-auto px-6">
             <motion.div
@@ -679,7 +673,6 @@ const HomePage = () => {
                     disableOnInteraction: false,
                   }}
                   spaceBetween={40}
-                  // Responsive slidesPerView is a key improvement
                   breakpoints={{
                     320: {
                       slidesPerView: 2,
@@ -873,20 +866,6 @@ const HomePage = () => {
               </Link>
             </div>
           </div>
-          <style jsx global>{`
-            .testimonial-swiper-pagination .swiper-pagination-bullet {
-              width: 10px;
-              height: 10px;
-              background-color: #cbd5e1; /* slate-300 */
-              opacity: 1;
-              transition: background-color 0.3s, width 0.3s;
-            }
-            .testimonial-swiper-pagination .swiper-pagination-bullet-active {
-              width: 24px;
-              border-radius: 5px;
-              background-color: #4f46e5; /* indigo-600 */
-            }
-          `}</style>
         </div>
 
         <div className="bg-white py-24 sm:py-32">
@@ -989,7 +968,6 @@ const HomePage = () => {
         </div>
 
         <div className="relative bg-slate-900 py-24 sm:py-32 overflow-hidden">
-          {/* Subtle background grid pattern */}
           <div className="absolute inset-0 bg-grid-slate-700/10 [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
 
           <div className="w-full lg:w-[70%] mx-auto px-6 text-center relative z-10">
@@ -1045,8 +1023,21 @@ const HomePage = () => {
               </motion.div>
             </motion.div>
           </div>
+          <style jsx global>{`
+            .testimonial-swiper-pagination .swiper-pagination-bullet {
+              width: 10px;
+              height: 10px;
+              background-color: #cbd5e1; /* slate-300 */
+              opacity: 1;
+              transition: background-color 0.3s, width 0.3s;
+            }
+            .testimonial-swiper-pagination .swiper-pagination-bullet-active {
+              width: 24px;
+              border-radius: 5px;
+              background-color: #4f46e5; /* indigo-600 */
+            }
+          `}</style>
 
-          {/* Add this style block for the subtle grid background */}
           <style jsx global>{`
             .bg-grid-slate-700\/10 {
               background-image: linear-gradient(white 2px, transparent 2px),
