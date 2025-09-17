@@ -318,7 +318,7 @@ const AboutPage = () => {
           The Story of Ajna Lab
         </motion.h2>
         <motion.p
-          className="text-center text-sm text-slate-600 leading-relaxed my-4 w-[60%] mx-auto"
+          className="text-justify md:text-center text-sm text-slate-600 leading-relaxed my-4 md:w-[60%] mx-auto"
           variants={itemVariants}
         >
           After identifying a critical need for integrated healthcare technology
@@ -398,7 +398,7 @@ const AboutPage = () => {
                     <h3 className="text-xl font-bold text-[#1e88e5] my-4 gap-4">
                       {activeHistoryItem.title}
                     </h3>
-                    <p className="text-slate-600 text-sm leading-relaxed">
+                    <p className="text-slate-600 text-sm text-justify leading-relaxed">
                       {activeHistoryItem.description}
                     </p>
                   </div>

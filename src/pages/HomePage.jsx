@@ -22,10 +22,12 @@ import 'swiper/css/pagination'
 
 import MainImg from '../assets/homepagedoctor.jpg'
 import LogoImg from '../assets/logo.png'
-import AboutImg from '../assets/adobe.png'
+import AboutImg from '../assets/ajna_without_text.png'
 import underline from '../assets/one.png'
 import CurveLine from '../assets/curve-blue.png'
 import { Link } from 'react-router-dom'
+import Solutions from '../components/layouts/Solutions'
+import SolutionsSection from '../components/layouts/SolutionsComponent'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -93,54 +95,6 @@ const valueThemes = [
       textColor: 'text-red-500',
       bgColor: 'bg-red-50',
     },
-  },
-]
-
-const solutions = [
-  {
-    id: 1,
-    title: 'Palika Care',
-    description:
-      'Empower local governments with data-driven insights, citizen health records, and seamless coordination across health posts.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1559757148-5c350d0d3c56?q=80&w=2940&auto=format&fit=crop',
-    Icon: Users,
-  },
-  {
-    id: 2,
-    title: 'Clinic Standalone',
-    description:
-      'An all-in-one tool for solo doctors. Manage appointments, prescriptions, and billing effortlessly to focus on care, not paperwork.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=2940&auto=format&fit=crop',
-    Icon: Clipboard,
-  },
-  {
-    id: 3,
-    title: 'Clinic Care',
-    description:
-      'Built for high-tech polyclinics managing multiple doctors and high patient volume. Streamlined workflows keep care efficient and patients satisfied.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1551190822-a9333d879b1f?q=80&w=2940&auto=format&fit=crop',
-    Icon: Activity,
-  },
-  {
-    id: 4,
-    title: 'Ajna hOS Standard',
-    description:
-      'Bring every hospital department together in one seamless system from OPD to IPD. Features role-based access, secure records, and real-time analytics.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1586773860418-d37222d8fce3?q=80&w=2940&auto=format&fit=crop',
-    Icon: Server,
-  },
-  {
-    id: 5,
-    title: 'Ajna hOS Enterprise',
-    description:
-      'For large hospitals and networks, the Enterprise Edition offers advanced integrations, AI-driven insights, and modular expansions for smarter decisions.',
-    imageUrl:
-      'https://images.unsplash.com/photo-1504813184591-01572f98c85f?q=80&w=2940&auto=format&fit=crop',
-    Icon: Cpu,
   },
 ]
 
@@ -235,84 +189,33 @@ const gallery = [
 ]
 
 const ValueCard = ({ number, title, text, theme, icon: Icon }) => (
-  <div className="relative w-full h-[450px] max-w-sm mx-auto">
-    <div className={`absolute -translate-x-1/2 -top-7 left-1/4 z-40`}>
+  <div className="relative w-full max-w-sm mx-auto">
+    <div
+      className={`absolute -top-7 left-1/2 -translate-x-1/2 sm:left-1/4 sm:-translate-x-1/2 z-10`}
+    >
       <div
-        className={`w-15 h-15 rounded-full border-4 flex items-center justify-center text-lg font-semibold ${theme.borderColor} ${theme.bgColor} ${theme.textColor}`}
+        className={`w-14 h-14 sm:w-16 sm:h-16 rounded-full border-4 flex items-center justify-center text-lg font-semibold ${theme.borderColor} ${theme.bgColor} ${theme.textColor}`}
       >
         {number}
       </div>
     </div>
     <div
-      className={`z-20 relative w-full rounded-2xl shadow-md bg-white p-5 border-t-[6px] ${theme.borderColor}`}
+      className={`relative w-full min-h-[320px] sm:min-h-[350px] rounded-2xl shadow-lg bg-white pt-12 pb-8 px-6 border-t-8 ${theme.borderColor}`}
     >
-      <div className="flex flex-col h-full pt-6 text-left">
-        <div className="flex flex-col items-start mb-6 gap-5">
-          <div className={`p-4 rounded-full text-gray-700 bg-gray-200 mr-4`}>
-            <Icon size={48} />
+      <div className="flex flex-col h-full text-center sm:text-left">
+        <div className="flex flex-col sm:flex-row items-center sm:items-start mb-5 gap-5">
+          <div
+            className={`p-3 sm:p-4 rounded-full bg-gray-100 text-gray-700 mb-3 sm:mb-0 sm:mr-4`}
+          >
+            <Icon size={40} />
           </div>
-          <h3 className="text-xl font-semibold text-gray-900">{title}</h3>
+          <h3 className="text-xl font-semibold text-gray-900 mt-2">{title}</h3>
         </div>
-        <p className="text-base text-gray-800 leading-relaxed">{text}</p>
+        <p className="text-base text-gray-700 leading-relaxed">{text}</p>
       </div>
     </div>
   </div>
 )
-
-const SolutionSection = ({ solution }) => {
-  const ref = React.useRef(null)
-  const isInView = useInView(ref, { once: true, amount: 0.5 })
-
-  return (
-    <section
-      ref={ref}
-      className="h-screen w-full relative flex items-center justify-start snap-start"
-    >
-      <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-        style={{
-          backgroundImage: `url(${solution.imageUrl})`,
-        }}
-      >
-        <div className="absolute inset-0 bg-black/50" />
-      </div>
-      <div className="w-full lg:w-[60%] mx-auto px-8 max-w-7xl relative z-10">
-        <motion.div
-          className="max-w-3xl text-white"
-          initial={{ opacity: 0, x: -100 }}
-          animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -100 }}
-          transition={{ duration: 0.8, ease: 'easeOut' }}
-        >
-          <motion.h2
-            className="text-7xl md:text-8xl font-bold mb-10 leading-tight"
-            style={{
-              textShadow: '2px 2px 10px rgba(0,0,0,0.7)',
-              filter: 'drop-shadow(0 4px 6px rgba(0, 0, 0, 0.3))',
-            }}
-          >
-            {solution.title}
-          </motion.h2>
-          <motion.p
-            className="text-2xl md:text-3xl mb-12 leading-relaxed text-white/95"
-            style={{ textShadow: '1px 1px 5px rgba(0,0,0,0.6)' }}
-          >
-            {solution.description}
-          </motion.p>
-          <motion.button
-            className="bg-gradient-to-r from-blue-600 to-purple-600 text-white font-bold py-6 px-12 rounded-full text-xl shadow-2xl transform transition-all duration-300 hover:shadow-3xl"
-            whileHover={{
-              scale: 1.1,
-              boxShadow: '0 20px 40px rgba(0,0,0,0.3)',
-            }}
-            whileTap={{ scale: 0.95 }}
-          >
-            Request a Demo
-          </motion.button>
-        </motion.div>
-      </div>
-    </section>
-  )
-}
 
 const HomePage = () => {
   const [selectedImage, setSelectedImage] = useState(null)
@@ -560,21 +463,21 @@ const HomePage = () => {
         </div>
 
         {/* Why Ajna Lab? */}
-        <div className="py-24  bg-white">
-          <div className="my-16">
-            <h1 className="text-7xl font-bold text-gray-800 text-center">
+        <div className="py-10 sm:py-16 md:py-20 bg-white">
+          <div className="my-4 sm:my-8 md:my-12">
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-bold text-gray-800 text-center">
               Why{' '}
               <span
-                className={`relative inline-block font-bold text-indigo-600 before:content-[''] before:absolute before:-bottom-40 before:left-1 before:w-full before:h-[300px] before:bg-[url(${underline})] before:bg-contain before:bg-no-repeat before:bg-center`}
+                className={`relative inline-block font-bold text-indigo-600 before:content-[''] before:absolute before:-bottom-16 sm:before:-bottom-20 md:before:-bottom-28 lg:before:-bottom-40 before:left-0 before:w-full before:h-[100px] sm:before:h-[150px] md:before:h-[200px] lg:before:h-[300px] before:bg-[url(${underline})] before:bg-contain before:bg-no-repeat before:bg-center`}
               >
                 Ajna Lab
               </span>
             </h1>
-            <p className="text-3xl py-8 font-medium text-gray-600 text-center">
+            <p className="text-lg sm:text-xl md:text-2xl py-6 font-medium text-gray-600 text-center">
               From Ideas to Impact
             </p>
           </div>
-          <div className="w-full lg:w-[60%] my-16 mx-auto relative px-8">
+          <div className="w-11/12 lg:w-4/5 xl:w-[70%] my-8 md:my-12 mx-auto relative px-2 sm:px-4">
             <div className="absolute inset-0 flex justify-center items-center">
               <img
                 src={CurveLine}
@@ -584,7 +487,7 @@ const HomePage = () => {
             </div>
 
             <motion.div
-              className="flex flex-col lg:flex-row justify-center items-start gap-y-20 lg:gap-10 relative"
+              className="flex flex-col lg:flex-row justify-center items-center lg:items-start gap-y-20 lg:gap-10 relative"
               variants={containerVariants}
               initial="hidden"
               whileInView="visible"
@@ -609,19 +512,14 @@ const HomePage = () => {
           </div>
         </div>
 
-        <div
-          ref={solutionsContainerRef}
-          className="h-screen w-full overflow-y-scroll"
-        >
-          {solutions.map(solution => (
-            <SolutionSection key={solution.id} solution={solution} />
-          ))}
-        </div>
+        {/* Solutions Section */}
+        <SolutionsSection />
 
-        <div className="bg-slate-50 py-24 sm:py-32 overflow-hidden">
+        {/* Work Beyond Healthcare */}
+        <div className="bg-slate-100 py-24 sm:py-32 overflow-hidden">
           <div className="w-full lg:w-[60%] mx-auto px-6">
             <motion.div
-              className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
+              className="md:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
@@ -764,7 +662,7 @@ const HomePage = () => {
         </div>
 
         {/* Testimonials */}
-        <div className="bg-slate-50 py-24 sm:py-32">
+        <div className="bg-slate-100 py-24 sm:py-32">
           <div className="w-full lg:w-[60%] mx-auto px-6">
             <motion.div
               className="text-center max-w-3xl mx-auto"

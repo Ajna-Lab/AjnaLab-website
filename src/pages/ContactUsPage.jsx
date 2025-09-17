@@ -53,7 +53,7 @@ const ContactUsPage = () => {
   }
 
   return (
-    <div className="bg-slate-50 text-slate-800 font-sans overflow-x-hidden">
+    <div className="bg-slate-50 text-slate-800 font-sans pt-30 md:pt-20">
       <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-teal-50 via-white to-amber-50 -z-10" />
 
       <div className="relative z-10">

@@ -12,7 +12,7 @@ import {
   FiUsers,
   FiHeart,
 } from 'react-icons/fi'
-// import ClinicProMockup from '../assets/clinic-pro-mockup.png'; // Suggested: Add a product mockup image
+import ClinicProMockup from '../assets/clinic-pro-mockup.png'
 // import PatientInteractionImage from '../assets/patient-interaction.jpg'; // Suggested: Add relevant images
 // import ClinicGrowthImage from '../assets/clinic-growth.jpg'; // Suggested: Add relevant images
 
@@ -171,7 +171,7 @@ const ClinicProPage = () => {
               transition={{ duration: 0.8, ease: 'easeOut' }}
             >
               <img
-                src=""
+                src={ClinicProMockup}
                 alt="Clinic Pro software on a laptop screen"
                 className="w-full h-auto"
               />
