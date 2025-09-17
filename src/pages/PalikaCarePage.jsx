@@ -1,5 +1,5 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   FiArrowRight,
   FiUsers,
@@ -8,11 +8,13 @@ import {
   FiShield,
   FiHeart,
   FiCheckCircle,
+  FiChevronDown,
 } from 'react-icons/fi'
 import PalikaCareMockup from '../assets/palika-care-mockup.png'
 import CommunityImage from '../assets/community-health.png'
 import DataDashboardImage from '../assets/data-dashboard.png'
 
+// --- ANIMATION VARIANTS ---
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -26,7 +28,7 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } },
 }
 
-// Data
+// --- DATA ---
 const features = [
   {
     icon: FiDatabase,
@@ -92,19 +94,72 @@ const benefits = [
   },
 ]
 
+const faqData = [
+  {
+    question: 'How does Palika Care improve citizen health outcomes?',
+    answer:
+      'By creating a unified digital health record, Palika Care ensures continuity of care across all local health posts. This leads to better diagnoses, reduced errors, and allows for proactive public health interventions based on real-time data.',
+  },
+  {
+    question: 'Is the system difficult for non-technical staff to use?',
+    answer:
+      'No. Palika Care is designed with a simple, intuitive interface. We prioritize user-friendliness to ensure that healthcare workers, regardless of their technical skill level, can adopt and use the system efficiently with minimal training.',
+  },
+  {
+    question: 'What kind of data and reports can the municipality access?',
+    answer:
+      'Municipal leaders can access a secure dashboard with real-time data on disease prevalence, vaccination coverage, maternal health metrics, and more. These insights are crucial for effective policy-making and resource allocation.',
+  },
+  {
+    question: 'How is the data secured and who owns it?',
+    answer:
+      'Data security is our top priority. The platform uses end-to-end encryption and strict role-based access controls. The municipality and the respective health authorities retain full ownership of their data.',
+  },
+]
+
+// --- REUSABLE FAQ COMPONENT ---
+const AccordionItem = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  return (
+    <motion.div variants={itemVariants} className="border-b border-slate-200">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center py-5 text-left"
+      >
+        <span className="text-lg font-semibold text-slate-800">{question}</span>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <FiChevronDown className="w-5 h-5 text-slate-500" />
+        </motion.div>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+            <p className="pb-5 pr-10 text-slate-600 leading-relaxed">
+              {answer}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
+}
+
+// --- MAIN PAGE COMPONENT ---
 const PalikaCarePage = () => {
   return (
     <div className="bg-white text-slate-800 font-sans">
-      {/* Hero Section */}
       <section className="relative bg-white pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
         <div className="absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl">
-          <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#a7f3d0] to-[#38bdf8] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          />
+          <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#a7f3d0] to-[#38bdf8] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
         </div>
         <div className="w-full lg:w-[60%] mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -147,9 +202,13 @@ const PalikaCarePage = () => {
               </motion.div>
             </motion.div>
             <motion.div
-              initial={{ opacity: 0, scale: 0.9 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.8, ease: 'easeOut' }}
+              animate={{ y: [-5, 5] }}
+              transition={{
+                duration: 3,
+                repeat: Infinity,
+                repeatType: 'mirror',
+                ease: 'easeInOut',
+              }}
             >
               <img
                 src={PalikaCareMockup}
@@ -161,7 +220,6 @@ const PalikaCarePage = () => {
         </div>
       </section>
 
-      {/* Key Features Section */}
       <section className="py-24 sm:py-32 bg-slate-50">
         <div className="w-full lg:w-[60%] mx-auto px-6">
           <motion.div
@@ -213,7 +271,6 @@ const PalikaCarePage = () => {
         </div>
       </section>
 
-      {/* Impact Section */}
       <section className="py-24 sm:py-32 bg-white">
         <div className="w-full lg:w-[60%] mx-auto px-6">
           <motion.div
@@ -248,7 +305,7 @@ const PalikaCarePage = () => {
               <motion.div
                 key={index}
                 variants={itemVariants}
-                className="bg-slate-50/80 p-8 rounded-2xl border border-slate-200/60"
+                className="bg-gradient-to-br from-slate-50 to-slate-100 p-8 rounded-2xl border border-slate-200/60 transition-all hover:shadow-xl hover:-translate-y-1"
               >
                 <p className="text-4xl md:text-5xl font-extrabold text-teal-600">
                   {stat.number}
@@ -262,7 +319,6 @@ const PalikaCarePage = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-24 sm:py-32 bg-slate-50">
         <div className="w-full lg:w-[60%] mx-auto px-6 space-y-24">
           {benefits.map((benefit, index) => (
@@ -317,20 +373,60 @@ const PalikaCarePage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-white py-20 sm:py-24">
-        <div className="w-full lg:w-[60%] mx-auto px-6 text-center">
+      {/* NEW FAQ Section */}
+      <section className="py-24 sm:py-32 bg-white">
+        <div className="w-full lg:w-[60%] mx-auto px-6">
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            <motion.h2
+              variants={itemVariants}
+              className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tighter mb-4"
+            >
+              Frequently Asked Questions
+            </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="text-lg text-slate-600 leading-relaxed"
+            >
+              Have questions? We've got answers. If your question isn't listed
+              here, feel free to contact us directly.
+            </motion.p>
+          </motion.div>
+          <motion.div
+            className="max-w-3xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={containerVariants}
+          >
+            {faqData.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                question={faq.question}
+                answer={faq.answer}
+              />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="bg-slate-900">
+        <div className="w-full lg:w-[60%] mx-auto px-6 py-20 sm:py-24 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
             className="max-w-3xl mx-auto"
           >
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 tracking-tighter">
+            <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter">
               Transform Your Municipality's Healthcare
             </h2>
-            <p className="mt-6 text-lg max-w-2xl mx-auto text-slate-600">
+            <p className="mt-6 text-lg max-w-2xl mx-auto text-slate-300">
               Palika Care is the trusted solution for local governments. Let's
               build a healthier future for your community, together.
             </p>

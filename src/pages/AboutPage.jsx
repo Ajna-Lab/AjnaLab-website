@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import {
   motion,
   useInView,
@@ -12,13 +12,13 @@ import {
   FiHeart,
   FiSend,
   FiCpu,
+  FiArrowRight,
   FiShield,
   FiAward,
   FiUsers,
   FiGlobe,
 } from 'react-icons/fi'
 
-// --- ANIMATION VARIANTS ---
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -192,7 +192,6 @@ const InputField = ({ id, label, type, required }) => (
   </div>
 )
 
-// --- MAIN PAGE COMPONENT ---
 const AboutPage = () => {
   const [activeTab, setActiveTab] = useState(history[0].year)
   const activeHistoryItem = history.find(item => item.year === activeTab)
@@ -206,7 +205,6 @@ const AboutPage = () => {
 
   return (
     <div className="bg-white font-sans text-slate-800">
-      {/* Hero Section */}
       <section className="relative bg-white pt-32 pb-20 md:pt-40 md:pb-28 overflow-hidden">
         <div className="absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl">
           <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#d8b4fe] to-[#818cf8] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
@@ -251,7 +249,6 @@ const AboutPage = () => {
         </div>
       </section>
 
-      {/* Our Story & Mission Section */}
       <Section className="bg-slate-50">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           <motion.div variants={itemVariants}>
@@ -294,7 +291,6 @@ const AboutPage = () => {
         </div>
       </Section>
 
-      {/* Stats Section */}
       <Section>
         <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
           {stats.map(stat => (
@@ -303,7 +299,6 @@ const AboutPage = () => {
         </div>
       </Section>
 
-      {/* History / Timeline Section */}
       <Section className="bg-slate-50">
         <motion.h5
           variants={itemVariants}
@@ -391,7 +386,7 @@ const AboutPage = () => {
                     <img
                       src={activeHistoryItem.imageUrl}
                       alt={activeHistoryItem.title}
-                      className="w-full h-64 object-fill rounded-xl shadow-lg"
+                      className="w-full h-auto object-cover rounded-xl shadow-lg"
                     />
                   </div>
                   <div>
@@ -409,7 +404,6 @@ const AboutPage = () => {
         </div>
       </Section>
 
-      {/* NEW Values Section */}
       <Section>
         <motion.h2
           variants={itemVariants}
@@ -455,7 +449,6 @@ const AboutPage = () => {
         </div>
       </Section>
 
-      {/* Team Section */}
       <Section>
         <motion.h2
           variants={itemVariants}
@@ -476,7 +469,6 @@ const AboutPage = () => {
         </div>
       </Section>
 
-      {/* Clients Section */}
       <Section className="bg-slate-50">
         <motion.h2
           variants={itemVariants}
@@ -503,57 +495,47 @@ const AboutPage = () => {
         </motion.div>
       </Section>
 
-      {/* CTA Section */}
       <Section className="bg-slate-900">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          <motion.div
-            variants={itemVariants}
-            className="text-center lg:text-left"
-          >
-            <h2 className="text-4xl md:text-5xl font-extrabold text-white tracking-tighter">
+        <div className="max-w-3xl mx-auto text-center">
+          <motion.div variants={containerVariants} className="text-center">
+            <motion.h2
+              variants={itemVariants}
+              className="text-4xl md:text-5xl font-extrabold text-white tracking-tighter"
+            >
               Ready to build the future of healthcare?
-            </h2>
-            <p className="mt-4 text-lg text-slate-300">
+            </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="mt-6 text-lg text-slate-300 leading-relaxed"
+            >
               Let's connect. Whether you have a question or want a personalized
-              demo, we're here to help.
-            </p>
-          </motion.div>
-          <motion.div
-            variants={containerVariants}
-            className="bg-white p-8 rounded-2xl shadow-2xl space-y-5"
-          >
-            <motion.div variants={itemVariants}>
-              <InputField id="name" label="Full Name" type="text" required />
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <InputField id="email" label="Work Email" type="email" required />
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <div className="relative">
-                <textarea
-                  id="message"
-                  rows="3"
-                  required
-                  className="peer w-full p-3 bg-transparent rounded-lg border border-slate-300 focus:ring-2 focus:ring-indigo-500 focus:border-transparent placeholder-transparent transition"
-                  placeholder="Your Message"
-                ></textarea>
-                <label
-                  htmlFor="message"
-                  className="absolute left-3 -top-2.5 text-xs px-1 bg-white text-slate-600 transition-all peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-500 peer-placeholder-shown:top-3 peer-focus:-top-2.5 peer-focus:text-xs peer-focus:text-indigo-600"
-                >
-                  Your Message<span className="text-red-500 ml-0.5">*</span>
-                </label>
-              </div>
-            </motion.div>
-            <motion.div variants={itemVariants}>
-              <motion.button
-                type="submit"
-                className="w-full bg-indigo-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-indigo-700 transition-all flex items-center justify-center"
-                whileHover={{ scale: 1.03, y: -2 }}
-                whileTap={{ scale: 0.98 }}
+              demo, we're here to help you get started.
+            </motion.p>
+            <motion.div
+              variants={itemVariants}
+              className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
+              <motion.a
+                href="/book-a-demo"
+                whileHover={{
+                  scale: 1.05,
+                  y: -2,
+                  boxShadow: '0 10px 20px rgba(79, 70, 229, 0.25)',
+                }}
+                whileTap={{ scale: 0.98, y: 0 }}
+                className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-indigo-600 px-8 py-3 text-base font-semibold text-white shadow-lg hover:bg-indigo-700 transition-all"
               >
-                <FiSend className="mr-2" /> Send Message
-              </motion.button>
+                Book a Demo
+                <FiArrowRight className="ml-2 h-5 w-5" />
+              </motion.a>
+              <motion.a
+                href="/contact"
+                whileHover={{ scale: 1.05, y: -2 }}
+                whileTap={{ scale: 0.98, y: 0 }}
+                className="w-full sm:w-auto inline-flex items-center justify-center rounded-lg bg-slate-800/80 px-8 py-3 text-base font-semibold text-slate-300 ring-1 ring-slate-700 hover:bg-slate-700 hover:text-white transition-colors"
+              >
+                Contact Us
+              </motion.a>
             </motion.div>
           </motion.div>
         </div>

@@ -1,19 +1,16 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   FiArrowRight,
   FiShield,
   FiTrendingUp,
   FiCheckSquare,
   FiGitMerge,
-  FiDatabase,
   FiCheckCircle,
+  FiChevronDown,
 } from 'react-icons/fi'
-// import AjnaHOSEnterpriseMockup from '../assets/ajna-hos-enterprise-mockup.png'; // Suggested: Add a product mockup image
-// import DataSecurityImage from '../assets/data-security.jpg'; // Suggested: Add relevant images
-// import HospitalNetworkImage from '../assets/hospital-network.jpg'; // Suggested: Add relevant images
 
-// Animation Variants
+// --- ANIMATION VARIANTS ---
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -27,7 +24,7 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } },
 }
 
-// Data
+// --- DATA ---
 const corePillars = [
   {
     icon: FiShield,
@@ -65,7 +62,8 @@ const benefits = [
       'Optimize revenue cycles and supply chain management.',
       'Streamline workforce management, from rostering to payroll.',
     ],
-    image: 'DataSecurityImage',
+    image:
+      'https://images.unsplash.com/photo-1516542076529-1ea0855399f2?q=80&w=1471',
   },
   {
     title: 'Build a Future-Ready Healthcare Ecosystem',
@@ -76,7 +74,8 @@ const benefits = [
       'Ready for integration with IoT, telehealth, and AI diagnostic tools.',
       'Manage multi-branch hospital networks under one unified command center.',
     ],
-    image: 'HospitalNetworkImage',
+    image:
+      'https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=1484',
   },
 ]
 
@@ -113,11 +112,71 @@ const comparisonData = [
   },
 ]
 
-// Main Component
+const faqData = [
+  {
+    question: 'How does Ajna hOS handle data migration from our legacy system?',
+    answer:
+      "We have a dedicated data migration team that works closely with your IT department. Our process involves a thorough data mapping, validation, and a phased rollout to ensure a seamless and secure transition with minimal disruption to your hospital's operations.",
+  },
+  {
+    question:
+      'What level of customization is possible for our specific workflows?',
+    answer:
+      'Ajna hOS Enterprise is highly modular and configurable. While our core system is built on best practices, we understand that every hospital is unique. Our implementation specialists will work with you to configure modules and workflows to match your specific operational needs.',
+  },
+  {
+    question:
+      'What are the security and compliance certifications of the platform?',
+    answer:
+      'Security is at the core of our architecture. The platform is designed to be HIPAA and GDPR compliant and supports standards like HL7 and FHIR for interoperability. Our cloud infrastructure follows ISO 27001 practices for information security management.',
+  },
+  {
+    question: 'How does the system scale for a multi-branch hospital network?',
+    answer:
+      'The Enterprise Edition is built on a multi-tenant architecture, allowing you to manage multiple hospitals or clinics from a single, centralized platform. This provides unified analytics and control while allowing for branch-specific configurations and data segregation.',
+  },
+]
+
+// --- REUSABLE FAQ COMPONENT ---
+const AccordionItem = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  return (
+    <motion.div variants={itemVariants} className="border-b border-slate-200">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center py-5 text-left"
+      >
+        <span className="text-lg font-semibold text-slate-800">{question}</span>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <FiChevronDown className="w-5 h-5 text-slate-500" />
+        </motion.div>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+            <p className="pb-5 pr-10 text-slate-600 leading-relaxed">
+              {answer}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
+}
+
+// --- MAIN PAGE COMPONENT ---
 const AjnaHOSEnterprisePage = () => {
   return (
     <div className="bg-slate-50 text-slate-800 font-sans">
-      {/* Hero Section */}
       <section className="relative bg-slate-900 text-white pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
         <div className="absolute inset-0 bg-grid-slate-700/10 [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
         <div className="w-full lg:w-[60%] mx-auto px-6">
@@ -166,7 +225,7 @@ const AjnaHOSEnterprisePage = () => {
               transition={{ duration: 0.8, ease: 'easeOut' }}
             >
               <img
-                src=""
+                src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?q=80&w=1470"
                 alt="Ajna hOS Enterprise dashboard on a modern display"
                 className="w-full h-auto"
               />
@@ -175,7 +234,6 @@ const AjnaHOSEnterprisePage = () => {
         </div>
       </section>
 
-      {/* Core Pillars Section */}
       <section className="py-24 sm:py-32 bg-white">
         <div className="w-full lg:w-[60%] mx-auto px-6">
           <motion.div
@@ -227,7 +285,6 @@ const AjnaHOSEnterprisePage = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-24 sm:py-32 bg-slate-50">
         <div className="w-full lg:w-[60%] mx-auto px-6 space-y-24">
           {benefits.map((benefit, index) => (
@@ -282,7 +339,6 @@ const AjnaHOSEnterprisePage = () => {
         </div>
       </section>
 
-      {/* Comparison Section */}
       <section className="py-24 sm:py-32 bg-white">
         <div className="w-full lg:w-[60%] mx-auto px-6">
           <motion.div
@@ -348,14 +404,54 @@ const AjnaHOSEnterprisePage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* NEW FAQ Section */}
+      <section className="py-24 sm:py-32 bg-slate-50">
+        <div className="w-full lg:w-[60%] mx-auto px-6">
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            <motion.h2
+              variants={itemVariants}
+              className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tighter mb-4"
+            >
+              Frequently Asked Questions
+            </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="text-lg text-slate-600 leading-relaxed"
+            >
+              Your questions, answered. Here is what enterprise leaders often
+              ask about our platform.
+            </motion.p>
+          </motion.div>
+          <motion.div
+            className="max-w-3xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={containerVariants}
+          >
+            {faqData.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                question={faq.question}
+                answer={faq.answer}
+              />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
       <section className="bg-slate-900">
         <div className="w-full lg:w-[60%] mx-auto px-6 py-20 sm:py-24 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
             className="max-w-3xl mx-auto"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-white tracking-tighter">

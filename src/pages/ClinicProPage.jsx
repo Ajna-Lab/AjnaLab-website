@@ -1,5 +1,5 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   FiArrowRight,
   FiFileText,
@@ -11,12 +11,10 @@ import {
   FiUser,
   FiUsers,
   FiHeart,
+  FiChevronDown,
 } from 'react-icons/fi'
 import ClinicProMockup from '../assets/clinic-pro-mockup.png'
-// import PatientInteractionImage from '../assets/patient-interaction.jpg'; // Suggested: Add relevant images
-// import ClinicGrowthImage from '../assets/clinic-growth.jpg'; // Suggested: Add relevant images
 
-// Animation Variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -30,7 +28,6 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } },
 }
 
-// Data
 const features = [
   {
     icon: FiFileText,
@@ -95,7 +92,8 @@ const benefits = [
       'Generate bills and receipts in a single click.',
       'Access patient information instantly during consultations.',
     ],
-    image: 'PatientInteractionImage',
+    image:
+      'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=1470',
   },
   {
     title: 'Grow Your Practice with Confidence and Clarity',
@@ -106,15 +104,77 @@ const benefits = [
       'Improve patient satisfaction with a modern, digital experience.',
       'Scale your operations seamlessly as your patient base grows.',
     ],
-    image: 'ClinicGrowthImage',
+    image:
+      'https://images.unsplash.com/photo-1527613426441-4da17471b66d?q=80&w=1470',
   },
 ]
 
-// Main Component
+const faqData = [
+  {
+    question: 'Is Clinic Pro difficult to set up?',
+    answer:
+      'Not at all. Clinic Pro is designed for quick and easy setup. You can be up and running in minutes with no technical expertise required. We also provide simple video tutorials to guide you.',
+  },
+  {
+    question: 'What kind of support is included?',
+    answer:
+      'All plans come with our friendly phone and email support. Our team is always ready to help you with any questions you may have to ensure you get the most out of Clinic Pro.',
+  },
+  {
+    question: "Can I access my clinic's data from anywhere?",
+    answer:
+      'Yes. Clinic Pro is a cloud-based system, which means you can securely access your patient records, appointments, and billing from any computer or tablet with an internet connection.',
+  },
+  {
+    question: 'How is my patient data kept secure?',
+    answer:
+      "We take data security very seriously. All your data is protected with bank-level encryption, stored on secure cloud servers, and we follow best practices to ensure your clinic's information is safe.",
+  },
+  {
+    question: 'Is there a long-term contract or commitment?',
+    answer:
+      'No. We offer simple monthly or annual billing with no long-term contracts. You can start with our free trial and choose the plan that works for you, with the flexibility to cancel anytime.',
+  },
+]
+
+const AccordionItem = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false)
+  return (
+    <motion.div variants={itemVariants} className="border-b border-slate-200">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center py-5 text-left"
+      >
+        <span className="text-lg font-semibold text-slate-800">{question}</span>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <FiChevronDown className="w-5 h-5 text-slate-500" />
+        </motion.div>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+            <p className="pb-5 pr-10 text-slate-600 leading-relaxed">
+              {answer}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
+}
+
 const ClinicProPage = () => {
   return (
     <div className="bg-white text-slate-800 font-sans">
-      {/* Hero Section */}
       <section className="relative bg-white pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
         <div className="absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl">
           <div
@@ -180,7 +240,6 @@ const ClinicProPage = () => {
         </div>
       </section>
 
-      {/* Key Features Section */}
       <section className="py-24 sm:py-32 bg-slate-50">
         <div className="w-full lg:w-[60%] mx-auto px-6">
           <motion.div
@@ -232,7 +291,6 @@ const ClinicProPage = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-24 sm:py-32 bg-white">
         <div className="w-full lg:w-[60%] mx-auto px-6 space-y-24">
           {benefits.map((benefit, index) => (
@@ -287,7 +345,6 @@ const ClinicProPage = () => {
         </div>
       </section>
 
-      {/* Who is it for Section */}
       <section className="py-24 sm:py-32 bg-slate-50">
         <div className="w-full lg:w-[60%] mx-auto px-6">
           <motion.div
@@ -339,8 +396,8 @@ const ClinicProPage = () => {
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="py-24 sm:py-32 bg-white">
+      {/* NEW FAQ Section */}
+      <section className="py-24 sm:py-32 bg-slate-100">
         <div className="w-full lg:w-[60%] mx-auto px-6">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
@@ -353,67 +410,40 @@ const ClinicProPage = () => {
               variants={itemVariants}
               className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tighter mb-4"
             >
-              Simple, Transparent Pricing
+              Frequently Asked Questions
             </motion.h2>
             <motion.p
               variants={itemVariants}
               className="text-lg text-slate-600 leading-relaxed"
             >
-              Choose the plan that's right for you. No hidden fees, no
-              surprises.
+              Have questions? We've got answers. If your question isn't listed
+              here, feel free to contact us.
             </motion.p>
           </motion.div>
           <motion.div
-            variants={itemVariants}
+            className="max-w-3xl mx-auto"
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, amount: 0.5 }}
-            className="max-w-md mx-auto bg-slate-50/80 p-8 rounded-2xl border border-slate-200/60 shadow-lg text-center"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={containerVariants}
           >
-            <h3 className="text-2xl font-bold text-slate-900">Clinic Pro</h3>
-            <p className="text-5xl font-extrabold text-slate-900 my-4">
-              $99
-              <span className="text-lg font-medium text-slate-500">/month</span>
-            </p>
-            <p className="text-slate-600 mb-6">
-              Billed annually. All features included.
-            </p>
-            <ul className="space-y-3 text-left mb-8">
-              <li className="flex items-center">
-                <FiCheckCircle className="text-sky-500 w-5 h-5 mr-3" />{' '}
-                Unlimited Patients
-              </li>
-              <li className="flex items-center">
-                <FiCheckCircle className="text-sky-500 w-5 h-5 mr-3" /> All
-                Features Included
-              </li>
-              <li className="flex items-center">
-                <FiCheckCircle className="text-sky-500 w-5 h-5 mr-3" /> Phone &
-                Email Support
-              </li>
-              <li className="flex items-center">
-                <FiCheckCircle className="text-sky-500 w-5 h-5 mr-3" /> Secure
-                Cloud Storage
-              </li>
-            </ul>
-            <a
-              href="/get-started"
-              className="w-full inline-flex items-center justify-center rounded-lg bg-sky-600 px-6 py-3 text-base font-semibold text-white shadow-lg hover:bg-sky-700 transition-all hover:-translate-y-1"
-            >
-              Start Your Free Trial
-            </a>
+            {faqData.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                question={faq.question}
+                answer={faq.answer}
+              />
+            ))}
           </motion.div>
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-slate-50 py-20 sm:py-24">
+      <section className="bg-white py-20 sm:py-24">
         <div className="w-full lg:w-[60%] mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
             className="max-w-3xl mx-auto"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-slate-800 tracking-tighter">

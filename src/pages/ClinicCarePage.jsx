@@ -1,5 +1,5 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react'
+import { motion, AnimatePresence } from 'framer-motion'
 import {
   FiArrowRight,
   FiUsers,
@@ -9,33 +9,9 @@ import {
   FiGitMerge,
   FiCalendar,
   FiBox,
+  FiChevronDown,
 } from 'react-icons/fi'
 
-// --- INSTRUCTIONS FOR IMAGES ---
-// I have used placeholder images from Unsplash to make the design work.
-// To use your own images:
-// 1. Place your images in your assets folder (e.g., src/assets/).
-// 2. Import them at the top of this file like this:
-//    import ClinicCareMockup from '../assets/clinic-care-mockup.png';
-//    import MultiSpecialtyImage from '../assets/multi-specialty-clinic.jpg';
-//    import PatientFlowImage from '../assets/patient-flow.jpg';
-// 3. Replace the URL strings in the `benefits` array and the `Hero Section` with these imported variables.
-
-// Animation Variants
-const containerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
-  },
-}
-
-const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } },
-}
-
-// Data
 const features = [
   {
     icon: FiUsers,
@@ -107,7 +83,6 @@ const benefits = [
       'Reduce patient wait times with an intelligent queue management system.',
       'Centralize all financial, inventory, and insurance data for better control.',
     ],
-    // Placeholder Image URL. Replace with your imported image variable.
     image:
       'https://images.unsplash.com/photo-1576091160399-112ba8d25d1f?q=80&w=2940&auto=format&fit=crop',
   },
@@ -120,26 +95,90 @@ const benefits = [
       'Minimize errors with integrated lab, radiology, and pharmacy modules.',
       'Provide data-driven insights for better clinical and operational decisions.',
     ],
-    // Placeholder Image URL. Replace with your imported image variable.
     image:
       'https://images.unsplash.com/photo-1551190822-a9333d879b1f?q=80&w=2940&auto=format&fit=crop',
   },
 ]
 
-// Main Component
+// NEW: Data for the FAQ Section
+const faqData = [
+  {
+    question: 'Who is Clinic Care best suited for?',
+    answer:
+      'Clinic Care is designed for busy, growing practices like multi-specialty polyclinics, high-volume urban clinics, and any healthcare center that needs to manage multiple doctors, departments, and complex patient workflows.',
+  },
+  {
+    question: 'Can it integrate with our existing lab and pharmacy?',
+    answer:
+      'Yes. Clinic Care is built with interoperability in mind. It features modules for seamless integration with diagnostic labs, radiology centers, and pharmacies to ensure a unified workflow from test request to results.',
+  },
+  {
+    question: 'Is our patient data secure on this platform?',
+    answer:
+      'Absolutely. We prioritize data security with features like end-to-end encryption, role-based access control (RBAC), and comprehensive audit logs. Our platform is designed to align with healthcare compliance standards.',
+  },
+  {
+    question: 'What kind of support and training do you offer?',
+    answer:
+      'We provide a complete onboarding package, including on-site or remote training for your staff. Our dedicated support team is available via phone and email to assist with any questions or issues that may arise.',
+  },
+]
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } },
+}
+
+const AccordionItem = ({ question, answer }) => {
+  const [isOpen, setIsOpen] = useState(false)
+
+  return (
+    <motion.div variants={itemVariants} className="border-b border-slate-200">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full flex justify-between items-center py-5 text-left"
+      >
+        <span className="text-lg font-semibold text-slate-800">{question}</span>
+        <motion.div
+          animate={{ rotate: isOpen ? 180 : 0 }}
+          transition={{ duration: 0.3 }}
+        >
+          <FiChevronDown className="w-5 h-5 text-slate-500" />
+        </motion.div>
+      </button>
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.3, ease: 'easeInOut' }}
+            className="overflow-hidden"
+          >
+            <p className="pb-5 pr-10 text-slate-600 leading-relaxed">
+              {answer}
+            </p>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.div>
+  )
+}
+
 const ClinicCarePage = () => {
   return (
     <div className="bg-white text-slate-800 font-sans">
-      {/* Hero Section */}
       <section className="relative bg-white pt-24 pb-16 md:pt-32 md:pb-24 overflow-hidden">
         <div className="absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl">
-          <div
-            className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#d8b4fe] to-[#818cf8] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]"
-            style={{
-              clipPath:
-                'polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)',
-            }}
-          />
+          <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#d8b4fe] to-[#818cf8] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
         </div>
         <div className="w-full lg:w-[60%] mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -186,7 +225,6 @@ const ClinicCarePage = () => {
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 0.8, ease: 'easeOut' }}
             >
-              {/* Placeholder Image URL. Replace with your imported image variable. */}
               <img
                 src="https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?q=80&w=2940&auto=format&fit=crop"
                 alt="Clinic Care software on a desktop monitor"
@@ -197,7 +235,6 @@ const ClinicCarePage = () => {
         </div>
       </section>
 
-      {/* Key Features Section */}
       <section className="py-24 sm:py-32 bg-slate-50">
         <div className="w-full lg:w-[60%] mx-auto px-6">
           <motion.div
@@ -249,7 +286,6 @@ const ClinicCarePage = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
       <section className="py-24 sm:py-32 bg-white">
         <div className="w-full lg:w-[60%] mx-auto px-6 space-y-24">
           {benefits.map((benefit, index) => (
@@ -304,7 +340,6 @@ const ClinicCarePage = () => {
         </div>
       </section>
 
-      {/* Who is it for Section */}
       <section className="py-24 sm:py-32 bg-slate-50">
         <div className="w-full lg:w-[60%] mx-auto px-6">
           <motion.div
@@ -353,14 +388,53 @@ const ClinicCarePage = () => {
         </div>
       </section>
 
-      {/* CTA Section */}
-      <section className="bg-white py-20 sm:py-24">
+      <section className="py-24 sm:py-32 bg-slate-100">
+        <div className="w-full lg:w-[60%] mx-auto px-6">
+          <motion.div
+            className="text-center max-w-3xl mx-auto mb-16"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={containerVariants}
+          >
+            <motion.h2
+              variants={itemVariants}
+              className="text-4xl md:text-5xl font-extrabold text-slate-900 tracking-tighter mb-4"
+            >
+              Frequently Asked Questions
+            </motion.h2>
+            <motion.p
+              variants={itemVariants}
+              className="text-lg text-slate-600 leading-relaxed"
+            >
+              Have questions? We've got answers. If you don't see your question
+              here, feel free to contact us.
+            </motion.p>
+          </motion.div>
+          <motion.div
+            className="max-w-3xl mx-auto"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
+            variants={containerVariants}
+          >
+            {faqData.map((faq, index) => (
+              <AccordionItem
+                key={index}
+                question={faq.question}
+                answer={faq.answer}
+              />
+            ))}
+          </motion.div>
+        </div>
+      </section>
+
+      <section className="bg-slate-50 py-20 sm:py-24">
         <div className="w-full lg:w-[60%] mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, amount: 0.5 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
             className="max-w-3xl mx-auto"
           >
             <h2 className="text-4xl md:text-5xl font-bold text-slate-800 tracking-tighter">

@@ -66,7 +66,7 @@ const ContactUsPage = () => {
           <div className="w-full lg:w-[60%] mx-auto px-6 text-center justify-center">
             <motion.h1
               variants={itemVariants}
-              className="text-5xl md:text-7xl font-bold text-teal-900 tracking-tighter"
+              className="text-5xl md:text-7xl font-bold text-[#1e88e5] tracking-tighter"
             >
               Let's Connect
             </motion.h1>
@@ -93,10 +93,10 @@ const ContactUsPage = () => {
               {/* Contact Information */}
               <motion.div variants={itemVariants} className="flex flex-col">
                 <div className="p-8 flex-grow">
-                  <h2 className="text-sm font-bold text-teal-600 uppercase tracking-widest">
+                  <h2 className="text-sm font-bold text-[#1e88e5] uppercase tracking-widest">
                     Contact
                   </h2>
-                  <h3 className="text-4xl font-bold text-teal-800 mt-2">
+                  <h3 className="text-4xl font-bold text-[#1e88e5]  mt-2">
                     Get In Touch ✋
                   </h3>
                   <p className="text-slate-600 mt-4">
@@ -107,21 +107,21 @@ const ContactUsPage = () => {
                   <div className="mt-8 space-y-5 text-base text-slate-600 border-t border-slate-200 pt-8">
                     <p className="flex text-2xl font-semibold items-center">
                       <FiMail
-                        className="mr-4 text-xl text-teal-500 flex-shrink-0"
+                        className="mr-4 text-xl text-[#1e88e5]/80 flex-shrink-0"
                         size={20}
                       />{' '}
                       info@ajnalab.com
                     </p>
                     <p className="flex text-2xl font-semibold items-center">
                       <FiPhone
-                        className="mr-4 text-xl text-teal-500 flex-shrink-0"
+                        className="mr-4 text-xl text-[#1e88e5]/80 flex-shrink-0"
                         size={20}
                       />{' '}
                       +977 980-1912821
                     </p>
                     <p className="flex text-2xl font-semibold items-start">
                       <FiMapPin
-                        className="mr-4 text-xl mt-1 text-teal-500 flex-shrink-0"
+                        className="mr-4 text-xl mt-1 text-[#1e88e5]/80 flex-shrink-0"
                         size={20}
                       />
                       Old Baneshwor Road, <br />
@@ -133,7 +133,7 @@ const ContactUsPage = () => {
 
               {/* Contact Form */}
               <motion.div variants={itemVariants} className=" p-8 ">
-                <h2 className="text-3xl font-bold text-teal-800 mb-8">
+                <h2 className="text-3xl font-bold text-[#1e88e5] mb-8">
                   Send a Message
                 </h2>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -149,7 +149,7 @@ const ContactUsPage = () => {
                     />
                     <label
                       htmlFor="name"
-                      className="absolute left-4 -top-3 text-sm text-slate-600 bg-white/0 px-1 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-500 peer-placeholder-shown:top-4 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-teal-600 peer-focus:bg-white/0 backdrop-blur-sm rounded-md"
+                      className="absolute left-4 -top-3 text-sm text-slate-600 bg-white/0 px-1 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-500 peer-placeholder-shown:top-4 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-[#1e88e5]/80 peer-focus:bg-white/0 backdrop-blur-sm rounded-md"
                     >
                       Full Name
                     </label>
@@ -166,7 +166,7 @@ const ContactUsPage = () => {
                     />
                     <label
                       htmlFor="email"
-                      className="absolute left-4 -top-3 text-sm text-slate-600 bg-white/0 px-1 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-500 peer-placeholder-shown:top-4 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-teal-600 peer-focus:bg-white/0 backdrop-blur-sm rounded-md"
+                      className="absolute left-4 -top-3 text-sm text-slate-600 bg-white/0 px-1 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-500 peer-placeholder-shown:top-4 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-[#1e88e5]/80 peer-focus:bg-white/0 backdrop-blur-sm rounded-md"
                     >
                       Your Email
                     </label>
@@ -183,7 +183,7 @@ const ContactUsPage = () => {
                     />
                     <label
                       htmlFor="phoneNumber"
-                      className="absolute left-4 -top-3 text-sm text-slate-600 bg-white/0 px-1 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-500 peer-placeholder-shown:top-4 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-teal-600 peer-focus:bg-white/0 backdrop-blur-sm rounded-md"
+                      className="absolute left-4 -top-3 text-sm text-slate-600 bg-white/0 px-1 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-500 peer-placeholder-shown:top-4 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-[#1e88e5]/80 peer-focus:bg-white/0 backdrop-blur-sm rounded-md"
                     >
                       Phone Number
                     </label>
@@ -194,13 +194,13 @@ const ContactUsPage = () => {
                       value={formData.message}
                       onChange={handleChange}
                       rows="5"
-                      className="peer w-full p-4 rounded-lg border border-slate-300 focus:ring-2 focus:ring-teal-500 focus:border-teal-500 text-base placeholder-transparent transition-colors duration-300"
+                      className="peer w-full p-4 rounded-lg border border-slate-300 focus:ring-2 focus:ring-[#1e88e5]/80 focus:border-[#1e88e5]/80 text-base placeholder-transparent transition-colors duration-300"
                       placeholder="Your message..."
                       required
                     ></textarea>
                     <label
                       htmlFor="message"
-                      className="absolute left-4 -top-3 text-sm text-slate-600 bg-white/0 px-1 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-500 peer-placeholder-shown:top-4 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-teal-600 peer-focus:bg-white/0 backdrop-blur-sm rounded-md"
+                      className="absolute left-4 -top-3 text-sm text-slate-600 bg-white/0 px-1 transition-all duration-300 peer-placeholder-shown:text-base peer-placeholder-shown:text-slate-500 peer-placeholder-shown:top-4 peer-focus:-top-3 peer-focus:text-sm peer-focus:text-[#1e88e5]/80 peer-focus:bg-white/0 backdrop-blur-sm rounded-md"
                     >
                       Your Message
                     </label>
