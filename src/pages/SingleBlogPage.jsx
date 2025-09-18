@@ -26,7 +26,6 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } },
 }
 
-// --- SUB COMPONENTS ---
 const ArticleHeader = ({ post }) => (
   <header className="relative h-[60vh] min-h-[450px] flex items-end justify-center text-white text-center overflow-hidden">
     <div

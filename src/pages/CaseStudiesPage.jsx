@@ -13,7 +13,7 @@ const caseStudiesData = [
   {
     id: 1,
     client: 'City General Hospital',
-    logoUrl: 'https://tailwindui.com/img/logos/tuple-logo-gray-400.svg', // Placeholder logo
+    logoUrl: 'https://tailwindui.com/img/logos/tuple-logo-gray-400.svg',
     title: 'How City General Hospital Reduced Patient Wait Times by 30%',
     description:
       'Discover how the implementation of Ajna hOS Standard streamlined their outpatient department, leading to significant improvements in patient flow and satisfaction.',
@@ -27,7 +27,7 @@ const caseStudiesData = [
   {
     id: 2,
     client: 'HealWell Polyclinic',
-    logoUrl: 'https://tailwindui.com/img/logos/reform-logo-gray-400.svg', // Placeholder logo
+    logoUrl: 'https://tailwindui.com/img/logos/reform-logo-gray-400.svg',
     title: 'Streamlining Multi-Specialty Operations with Clinic Care',
     description:
       'HealWell Polyclinic leveraged Clinic Care to unify their multi-specialty services, resulting in better inter-departmental coordination and a seamless patient experience.',
@@ -41,7 +41,7 @@ const caseStudiesData = [
   {
     id: 3,
     client: "Dr. Anjali Gurung's Practice",
-    logoUrl: 'https://tailwindui.com/img/logos/savvycal-logo-gray-400.svg', // Placeholder logo
+    logoUrl: 'https://tailwindui.com/img/logos/savvycal-logo-gray-400.svg',
     title: 'Empowering a Solo Practice with Clinic Pro for Sustainable Growth',
     description:
       'Learn how Clinic Pro helped a solo practitioner automate administrative tasks, reduce paperwork, and dedicate more time to patient care, leading to practice growth.',
@@ -78,7 +78,7 @@ const CaseStudiesPage = () => {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="w-full lg:w-[60%] mx-auto px-6 text-center"
+          className="w-full lg:w-[65%] mx-auto px-6 text-center"
         >
           <motion.div
             variants={itemVariants}
@@ -104,7 +104,7 @@ const CaseStudiesPage = () => {
 
       {/* Case Studies Grid */}
       <div className="py-24 sm:py-32">
-        <div className="w-full lg:w-[60%] mx-auto px-6">
+        <div className="w-full lg:w-[65%] mx-auto px-6">
           <motion.div
             className="space-y-16"
             initial="hidden"
@@ -164,7 +164,7 @@ const CaseStudiesPage = () => {
 
       {/* CTA Section */}
       <div className="bg-white py-20 sm:py-24">
-        <div className="w-full lg:w-[60%] mx-auto px-6 text-center">
+        <div className="w-full lg:w-[65%] mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}

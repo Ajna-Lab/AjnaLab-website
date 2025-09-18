@@ -1,45 +1,7 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import { FiStar, FiChevronRight } from 'react-icons/fi'
 import { FaQuoteLeft } from 'react-icons/fa'
-
-const testimonials = [
-  {
-    quote:
-      "Ajna hOS has transformed our hospital's workflow. The efficiency gains are remarkable, and the support team is always responsive.",
-    author: 'Dr. Ram Sharma',
-    title: 'Medical Director, City Hospital',
-    avatar: 'https://randomuser.me/api/portraits/men/11.jpg',
-  },
-  {
-    quote:
-      'The Clinic Care solution is perfect for our polyclinic. It’s intuitive, powerful, and has significantly reduced administrative overhead.',
-    author: 'Sita Rai',
-    title: 'Clinic Manager, HealWell Polyclinic',
-    avatar: 'https://randomuser.me/api/portraits/women/22.jpg',
-  },
-  {
-    quote:
-      'As a solo practitioner, Clinic Standalone is a lifesaver. I can focus more on my patients and less on paperwork. Highly recommended!',
-    author: 'Dr. Anjali Gurung',
-    title: 'General Practitioner',
-    avatar: 'https://randomuser.me/api/portraits/women/33.jpg',
-  },
-  {
-    quote:
-      'The team at Ajna Lab is not just a vendor; they are true partners. Their consultation services were invaluable in our digital transformation journey.',
-    author: 'Bikash Thapa',
-    title: 'CEO, Nepal Health Network',
-    avatar: 'https://randomuser.me/api/portraits/men/44.jpg',
-  },
-  {
-    quote:
-      'We have been using Ajna Lab’s solutions for over a year now and the experience has been nothing short of amazing. The system is robust and the support is top-notch.',
-    author: 'Prakash Adhikari',
-    title: 'IT Head, Grande International Hospital',
-    avatar: 'https://randomuser.me/api/portraits/men/55.jpg',
-  },
-]
+import { testimonials } from '../data/testimonialsData'
 
 const TestimonialsPage = () => {
   const containerVariants = {
@@ -61,9 +23,7 @@ const TestimonialsPage = () => {
 
   return (
     <div className="bg-slate-50 text-slate-700 font-sans">
-      {/* Hero Section */}
       <div className="relative bg-white pt-24 pb-16 sm:pt-32 sm:pb-20">
-        {/* Abstract background pattern */}
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
           aria-hidden="true"
@@ -81,7 +41,7 @@ const TestimonialsPage = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="w-full lg:w-[60%] mx-auto px-6 text-center"
+          className="w-full lg:w-[65%] mx-auto px-6 text-center"
         >
           <motion.div variants={itemVariants}>
             <div className="inline-flex items-center rounded-full bg-teal-50 p-1 pr-2 sm:text-base lg:text-sm xl:text-base hover:text-teal-600">
@@ -115,7 +75,7 @@ const TestimonialsPage = () => {
 
       {/* Testimonials Masonry Grid */}
       <div className="py-24 sm:py-32">
-        <div className="w-full lg:w-[60%] mx-auto px-6">
+        <div className="w-full lg:w-[65%] mx-auto px-6">
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-8">
             {testimonials.map((testimonial, index) => (
               <motion.div
@@ -164,9 +124,8 @@ const TestimonialsPage = () => {
         </div>
       </div>
 
-      {/* CTA Section */}
       <div className="bg-white py-20 sm:py-24">
-        <div className="w-full lg:w-[60%] mx-auto px-6 text-center">
+        <div className="w-full lg:w-[65%] mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

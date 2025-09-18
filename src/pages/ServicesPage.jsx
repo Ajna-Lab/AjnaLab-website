@@ -1,73 +1,7 @@
-import React from 'react'
 import { motion } from 'framer-motion'
-import {
-  FiCode,
-  FiServer,
-  FiSmartphone,
-  FiBriefcase,
-  FiArrowRight,
-  FiClipboard,
-  FiThumbsUp,
-  FiTrendingUp,
-  FiTarget,
-} from 'react-icons/fi'
+import { FiArrowRight } from 'react-icons/fi'
+import { services, processSteps } from '../data/serviceData'
 
-// Data for the services and process steps
-const services = [
-  {
-    icon: FiCode,
-    title: 'Custom Software Development',
-    description:
-      'We build bespoke software solutions tailored to your unique business needs, from enterprise applications to specialized tools that drive efficiency.',
-  },
-  {
-    icon: FiServer,
-    title: 'Healthcare Technology Systems',
-    description:
-      'Our expertise in healthcare IT allows us to develop and implement robust systems like EMR, HMIS, and our flagship Ajna hOS platform.',
-  },
-  {
-    icon: FiSmartphone,
-    title: 'Mobile Application Development',
-    description:
-      'We create intuitive and powerful mobile apps for both iOS and Android, extending your reach to users on the go with seamless experiences.',
-  },
-  {
-    icon: FiBriefcase,
-    title: 'Strategic IT Consultation',
-    description:
-      'Leverage our industry knowledge and technical expertise to guide your digital transformation strategy and solve your most complex challenges.',
-  },
-]
-
-const processSteps = [
-  {
-    icon: FiTarget,
-    title: 'Discovery & Strategy',
-    description:
-      'We start by understanding your goals and challenges to define a clear roadmap for success.',
-  },
-  {
-    icon: FiClipboard,
-    title: 'Design & Prototyping',
-    description:
-      'Our team creates intuitive UI/UX designs and functional prototypes to visualize the final product.',
-  },
-  {
-    icon: FiCode,
-    title: 'Development & Testing',
-    description:
-      'We build your solution using agile methodologies and conduct rigorous testing to ensure quality.',
-  },
-  {
-    icon: FiThumbsUp,
-    title: 'Deployment & Support',
-    description:
-      'We handle the launch and provide ongoing support to ensure smooth operation and scalability.',
-  },
-]
-
-// Animation Variants
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -81,11 +15,9 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } },
 }
 
-// Main Component
 const ServicesPage = () => {
   return (
     <div className="bg-slate-50 text-slate-700 font-sans">
-      {/* Hero Section */}
       <div className="relative bg-white pt-24 pb-16 sm:pt-32 sm:pb-24">
         <div
           className="absolute inset-x-0 -top-40 -z-10 transform-gpu overflow-hidden blur-3xl sm:-top-80"
@@ -103,7 +35,7 @@ const ServicesPage = () => {
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          className="w-full lg:w-[60%] mx-auto px-6 text-center"
+          className="w-full lg:w-[65%] mx-auto px-6 text-center"
         >
           <motion.div variants={itemVariants}>
             <span className="rounded-full bg-teal-50 px-3 py-1 text-sm font-semibold leading-6 text-teal-700 ring-1 ring-inset ring-teal-600/10">
@@ -127,9 +59,8 @@ const ServicesPage = () => {
         </motion.div>
       </div>
 
-      {/* Services Grid Section */}
       <div className="py-24 sm:py-32">
-        <div className="w-full lg:w-[60%] mx-auto px-6">
+        <div className="w-full lg:w-[65%] mx-auto px-6">
           <motion.div
             variants={containerVariants}
             initial="hidden"
@@ -158,9 +89,8 @@ const ServicesPage = () => {
         </div>
       </div>
 
-      {/* Our Process Section */}
       <div className="py-24 sm:py-32 bg-white">
-        <div className="w-full lg:w-[60%] mx-auto px-6">
+        <div className="w-full lg:w-[65%] mx-auto px-6">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
             initial="hidden"
@@ -183,7 +113,6 @@ const ServicesPage = () => {
             </motion.p>
           </motion.div>
           <div className="relative">
-            {/* Dashed line for desktop */}
             <div className="hidden lg:block absolute top-1/2 left-0 w-full h-px -translate-y-1/2">
               <svg width="100%" height="100%">
                 <line
@@ -225,9 +154,8 @@ const ServicesPage = () => {
         </div>
       </div>
 
-      {/* CTA Section */}
       <div className="bg-slate-50 py-20 sm:py-24">
-        <div className="w-full lg:w-[60%] mx-auto px-6 text-center">
+        <div className="w-full lg:w-[65%] mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

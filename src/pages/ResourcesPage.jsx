@@ -126,7 +126,7 @@ const ResourcesPage = () => {
   return (
     <div className="bg-slate-50">
       <header className="bg-white border-b border-slate-200">
-        <div className="w-full lg:w-[60%] mx-auto py-16 px-4 text-center">
+        <div className="w-full lg:w-[65%] mx-auto py-16 px-4 text-center">
           <motion.h1
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -148,7 +148,7 @@ const ResourcesPage = () => {
       </header>
 
       <main className="py-20">
-        <div className="w-full lg:w-[60%] mx-auto px-4">
+        <div className="w-full lg:w-[65%] mx-auto px-4">
           <div className="flex justify-center mb-12">
             <div className="flex items-center bg-white rounded-full shadow-md p-1.5">
               <FiFilter className="text-slate-400 mx-3" />

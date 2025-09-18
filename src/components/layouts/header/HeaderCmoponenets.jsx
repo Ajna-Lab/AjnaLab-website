@@ -149,12 +149,12 @@ const Header = () => {
 
   return (
     <>
-      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-300 ease-in-out pt-4">
+      <header className="fixed top-0 left-0 right-0 z-50 flex justify-center transition-all duration-300 ease-in-out pt-2">
         <div
           className={`transition-all duration-500 ease-in-out ${
             isScrolled
-              ? 'w-full rounded-none bg-white/80 backdrop-blur-lg shadow-md'
-              : 'w-11/12 lg:w-[60%] rounded-full bg-white/60 backdrop-blur-xl shadow-lg'
+              ? 'w-full rounded-none bg-white/80 backdrop-blur-lg shadow-md pt-0'
+              : 'w-11/12 lg:w-[65%] rounded-full bg-white/60 backdrop-blur-xl shadow-lg'
           }`}
         >
           <nav className="max-w-screen-xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-20">

@@ -180,7 +180,7 @@ const ClinicCarePage = () => {
         <div className="absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl">
           <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#d8b4fe] to-[#818cf8] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
         </div>
-        <div className="w-full lg:w-[60%] mx-auto px-6">
+        <div className="w-full lg:w-[65%] mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
               variants={containerVariants}
@@ -236,7 +236,7 @@ const ClinicCarePage = () => {
       </section>
 
       <section className="py-24 sm:py-32 bg-slate-50">
-        <div className="w-full lg:w-[60%] mx-auto px-6">
+        <div className="w-full lg:w-[65%] mx-auto px-6">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
             initial="hidden"
@@ -287,7 +287,7 @@ const ClinicCarePage = () => {
       </section>
 
       <section className="py-24 sm:py-32 bg-white">
-        <div className="w-full lg:w-[60%] mx-auto px-6 space-y-24">
+        <div className="w-full lg:w-[65%] mx-auto px-6 space-y-24">
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
@@ -341,7 +341,7 @@ const ClinicCarePage = () => {
       </section>
 
       <section className="py-24 sm:py-32 bg-slate-50">
-        <div className="w-full lg:w-[60%] mx-auto px-6">
+        <div className="w-full lg:w-[65%] mx-auto px-6">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
             initial="hidden"
@@ -389,7 +389,7 @@ const ClinicCarePage = () => {
       </section>
 
       <section className="py-24 sm:py-32 bg-slate-100">
-        <div className="w-full lg:w-[60%] mx-auto px-6">
+        <div className="w-full lg:w-[65%] mx-auto px-6">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
             initial="hidden"
@@ -430,7 +430,7 @@ const ClinicCarePage = () => {
       </section>
 
       <section className="bg-slate-50 py-20 sm:py-24">
-        <div className="w-full lg:w-[60%] mx-auto px-6 text-center">
+        <div className="w-full lg:w-[65%] mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

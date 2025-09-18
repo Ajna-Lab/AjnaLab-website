@@ -31,7 +31,7 @@ const BookDemoPage = () => {
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 font-sans flex items-center justify-center p-6">
-      <div className="w-full lg:w-[60%] mx-auto">
+      <div className="w-full lg:w-[65%] mx-auto">
         <div className="grid lg:grid-cols-2 gap-16 items-center bg-white p-8 md:p-12 rounded-2xl shadow-2xl shadow-slate-200/80">
           <motion.div
             variants={containerVariants}

@@ -1,88 +1,10 @@
 import React, { useState, useEffect } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { FiCamera, FiX, FiChevronLeft, FiChevronRight } from 'react-icons/fi'
+import { allImages, filters } from '../data/galleryData'
 
-// --- MOCK DATA ---
-// Using different image heights from Unsplash to demonstrate the masonry effect.
-const allImages = [
-  {
-    id: 1,
-    src: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800',
-    category: 'team',
-    caption: 'Strategic planning session',
-  },
-  {
-    id: 2,
-    src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800',
-    category: 'events',
-    caption: 'Company-wide workshop',
-  },
-  {
-    id: 3,
-    src: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800',
-    category: 'projects',
-    caption: 'Presenting our latest project',
-  },
-  {
-    id: 4,
-    src: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800',
-    category: 'team',
-    caption: 'Collaborative coding',
-  },
-  {
-    id: 5,
-    src: 'https://images.unsplash.com/photo-1587560699334-cc426240169f?w=800',
-    category: 'events',
-    caption: 'Celebrating a major milestone',
-  },
-  {
-    id: 6,
-    src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800',
-    category: 'projects',
-    caption: 'User testing our new application',
-  },
-  {
-    id: 7,
-    src: 'https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800',
-    category: 'team',
-    caption: 'Brainstorming new ideas',
-  },
-  {
-    id: 8,
-    src: 'https://images.unsplash.com/photo-1549923746-c502d488b3ea?w=800',
-    category: 'events',
-    caption: 'Annual company offsite',
-  },
-  {
-    id: 9,
-    src: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800',
-    category: 'projects',
-    caption: 'Late night project sprint',
-  },
-  {
-    id: 10,
-    src: 'https://images.unsplash.com/photo-1523240795612-9a054b0db644?w=800',
-    category: 'team',
-    caption: 'Our talented development team',
-  },
-  {
-    id: 11,
-    src: 'https://images.unsplash.com/photo-1573496773905-f5b17e76b254?w=800',
-    category: 'events',
-    caption: 'Guest speaker at a tech conference',
-  },
-  {
-    id: 12,
-    src: 'https://images.unsplash.com/photo-1581093450021-4a7360aa9a2f?w=800',
-    category: 'projects',
-    caption: 'Innovating in the lab',
-  },
-]
-
-const filters = ['all', 'team', 'events', 'projects']
 const ITEMS_PER_PAGE = 8
 
-// --- ANIMATION VARIANTS ---
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -96,7 +18,6 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } },
 }
 
-// --- MAIN COMPONENT ---
 const GalleryPage = () => {
   const [activeFilter, setActiveFilter] = useState('all')
   const [filteredImages, setFilteredImages] = useState([])
@@ -109,7 +30,7 @@ const GalleryPage = () => {
         ? allImages
         : allImages.filter(img => img.category === activeFilter)
     setFilteredImages(images)
-    setVisibleCount(ITEMS_PER_PAGE) // Reset visible count on filter change
+    setVisibleCount(ITEMS_PER_PAGE)
   }, [activeFilter])
 
   const handleNextImage = () => {
@@ -144,7 +65,6 @@ const GalleryPage = () => {
 
   return (
     <div className="bg-slate-50 font-sans text-slate-800">
-      {/* Hero Section */}
       <div className="relative bg-white pt-28 pb-16 md:pt-36 md:pb-24">
         <div className="absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl">
           <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#a7f3d0] to-[#38bdf8] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
@@ -153,7 +73,7 @@ const GalleryPage = () => {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="w-full lg:w-[60%] mx-auto px-6 text-center"
+          className="w-full lg:w-[65%] mx-auto px-6 text-center"
         >
           <motion.div
             variants={itemVariants}
@@ -177,10 +97,8 @@ const GalleryPage = () => {
         </motion.div>
       </div>
 
-      {/* Main Gallery Section */}
       <div className="py-24 sm:py-32">
-        <div className="w-full lg:w-[60%] mx-auto px-6">
-          {/* Filter Buttons */}
+        <div className="w-full lg:w-[65%] mx-auto px-6">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -203,7 +121,6 @@ const GalleryPage = () => {
             ))}
           </motion.div>
 
-          {/* Masonry Grid */}
           <motion.div
             layout
             className="columns-1 sm:columns-2 lg:columns-3 xl:columns-4 gap-6 space-y-6"
@@ -235,7 +152,6 @@ const GalleryPage = () => {
             </AnimatePresence>
           </motion.div>
 
-          {/* Load More Button */}
           {visibleCount < filteredImages.length && (
             <div className="text-center mt-12">
               <motion.button
@@ -251,7 +167,6 @@ const GalleryPage = () => {
         </div>
       </div>
 
-      {/* Lightbox Modal */}
       <AnimatePresence>
         {selectedImage && (
           <motion.div

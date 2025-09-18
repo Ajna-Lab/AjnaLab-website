@@ -1,20 +1,9 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  FiArrowRight,
-  FiUsers,
-  FiBarChart2,
-  FiDatabase,
-  FiShield,
-  FiHeart,
-  FiCheckCircle,
-  FiChevronDown,
-} from 'react-icons/fi'
+import { FiArrowRight, FiCheckCircle, FiChevronDown } from 'react-icons/fi'
+import { features, stats, benefits, faqData } from '../data/palikaCaredata'
 import PalikaCareMockup from '../assets/palika-care-mockup.png'
-import CommunityImage from '../assets/community-health.png'
-import DataDashboardImage from '../assets/data-dashboard.png'
 
-// --- ANIMATION VARIANTS ---
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -28,96 +17,6 @@ const itemVariants = {
   visible: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 100 } },
 }
 
-// --- DATA ---
-const features = [
-  {
-    icon: FiDatabase,
-    title: 'Community Health Records',
-    description:
-      'A secure, centralized digital health record system accessible across all local facilities.',
-  },
-  {
-    icon: FiHeart,
-    title: 'Primary & Public Health',
-    description:
-      'Manage vaccination, maternal health, chronic diseases, and OPD care seamlessly.',
-  },
-  {
-    icon: FiBarChart2,
-    title: 'Data & Analytics',
-    description:
-      'Access real-time health dashboards for data-driven decisions and policy-making.',
-  },
-  {
-    icon: FiUsers,
-    title: 'Integrated Local Network',
-    description:
-      'Connect community clinics, health posts, and municipal hospitals on one unified platform.',
-  },
-  {
-    icon: FiShield,
-    title: 'Secure & Compliant',
-    description:
-      'Built with role-based access and aligned with global digital health standards for data privacy.',
-  },
-]
-
-const stats = [
-  { number: '2M+', label: 'Citizens Covered' },
-  { number: '50+', label: 'Municipalities Powered' },
-  { number: '30%', label: 'Reduction in Paperwork' },
-  { number: '100%', label: 'Data-Driven Reporting' },
-]
-
-const benefits = [
-  {
-    title: 'Empower Municipalities & Local Governments',
-    description:
-      'Palika Care provides the tools to simplify healthcare administration, optimize resource allocation, and deliver efficient, citizen-focused care with full transparency.',
-    points: [
-      'Digitize and streamline all health governance tasks.',
-      'Gain real-time insights into community health trends.',
-      'Improve budget allocation with accurate data.',
-    ],
-    image: CommunityImage,
-  },
-  {
-    title: 'Enhance Community & Public Health',
-    description:
-      'By connecting health facilities and digitizing records, the platform expands access to quality healthcare in rural and underserved areas, ensuring no one is left behind.',
-    points: [
-      'Ensure continuity of care with shared digital records.',
-      'Monitor public health programs like vaccination drives.',
-      'Build a strong foundation for a national digital health ecosystem.',
-    ],
-    image: DataDashboardImage,
-  },
-]
-
-const faqData = [
-  {
-    question: 'How does Palika Care improve citizen health outcomes?',
-    answer:
-      'By creating a unified digital health record, Palika Care ensures continuity of care across all local health posts. This leads to better diagnoses, reduced errors, and allows for proactive public health interventions based on real-time data.',
-  },
-  {
-    question: 'Is the system difficult for non-technical staff to use?',
-    answer:
-      'No. Palika Care is designed with a simple, intuitive interface. We prioritize user-friendliness to ensure that healthcare workers, regardless of their technical skill level, can adopt and use the system efficiently with minimal training.',
-  },
-  {
-    question: 'What kind of data and reports can the municipality access?',
-    answer:
-      'Municipal leaders can access a secure dashboard with real-time data on disease prevalence, vaccination coverage, maternal health metrics, and more. These insights are crucial for effective policy-making and resource allocation.',
-  },
-  {
-    question: 'How is the data secured and who owns it?',
-    answer:
-      'Data security is our top priority. The platform uses end-to-end encryption and strict role-based access controls. The municipality and the respective health authorities retain full ownership of their data.',
-  },
-]
-
-// --- REUSABLE FAQ COMPONENT ---
 const AccordionItem = ({ question, answer }) => {
   const [isOpen, setIsOpen] = useState(false)
   return (
@@ -161,7 +60,7 @@ const PalikaCarePage = () => {
         <div className="absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl">
           <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#a7f3d0] to-[#38bdf8] opacity-20 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
         </div>
-        <div className="w-full lg:w-[60%] mx-auto px-6">
+        <div className="w-full lg:w-[65%] mx-auto px-6">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <motion.div
               variants={containerVariants}
@@ -221,7 +120,7 @@ const PalikaCarePage = () => {
       </section>
 
       <section className="py-24 sm:py-32 bg-slate-50">
-        <div className="w-full lg:w-[60%] mx-auto px-6">
+        <div className="w-full lg:w-[65%] mx-auto px-6">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
             initial="hidden"
@@ -272,7 +171,7 @@ const PalikaCarePage = () => {
       </section>
 
       <section className="py-24 sm:py-32 bg-white">
-        <div className="w-full lg:w-[60%] mx-auto px-6">
+        <div className="w-full lg:w-[65%] mx-auto px-6">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
             initial="hidden"
@@ -320,7 +219,7 @@ const PalikaCarePage = () => {
       </section>
 
       <section className="py-24 sm:py-32 bg-slate-50">
-        <div className="w-full lg:w-[60%] mx-auto px-6 space-y-24">
+        <div className="w-full lg:w-[65%] mx-auto px-6 space-y-24">
           {benefits.map((benefit, index) => (
             <motion.div
               key={index}
@@ -375,7 +274,7 @@ const PalikaCarePage = () => {
 
       {/* NEW FAQ Section */}
       <section className="py-24 sm:py-32 bg-white">
-        <div className="w-full lg:w-[60%] mx-auto px-6">
+        <div className="w-full lg:w-[65%] mx-auto px-6">
           <motion.div
             className="text-center max-w-3xl mx-auto mb-16"
             initial="hidden"
@@ -416,7 +315,7 @@ const PalikaCarePage = () => {
       </section>
 
       <section className="bg-slate-900">
-        <div className="w-full lg:w-[60%] mx-auto px-6 py-20 sm:py-24 text-center">
+        <div className="w-full lg:w-[65%] mx-auto px-6 py-20 sm:py-24 text-center">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}

@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   FiMapPin,
@@ -15,7 +15,6 @@ import {
 } from 'react-icons/fi'
 import { Link } from 'react-router-dom'
 
-// --- MOCK JOB DATA ---
 const job = {
   title: 'Senior Engineering Manager',
   location: 'Kathmandu, Nepal',
@@ -41,7 +40,6 @@ const job = {
   ],
 }
 
-// --- ANIMATION VARIANTS ---
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.1 } },
@@ -52,7 +50,6 @@ const itemVariants = {
   visible: { opacity: 1, x: 0, transition: { type: 'spring', stiffness: 100 } },
 }
 
-// --- REUSABLE COMPONENTS ---
 const InputField = ({ id, label, type, value, onChange, error, required }) => (
   <div>
     <div className="relative">
@@ -163,12 +160,11 @@ const FileInput = ({ file, setFile, error }) => {
   )
 }
 
-// --- MAIN PAGE COMPONENT ---
 const SingleCareerPage = () => {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '' })
   const [file, setFile] = useState(null)
   const [errors, setErrors] = useState({})
-  const [status, setStatus] = useState('idle') // idle, submitting, success, error
+  const [status, setStatus] = useState('idle')
 
   const handleChange = e => {
     const { id, value } = e.target
@@ -207,7 +203,6 @@ const SingleCareerPage = () => {
     setStatus('submitting')
     await new Promise(resolve => setTimeout(resolve, 2000))
 
-    // Simulate success/error for demonstration
     if (Math.random() > 0.2) {
       setStatus('success')
     } else {
@@ -228,7 +223,7 @@ const SingleCareerPage = () => {
         <div className="absolute inset-x-0 top-0 -z-10 transform-gpu overflow-hidden blur-3xl">
           <div className="relative left-[calc(50%-11rem)] aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#a7f3d0] to-[#38bdf8] opacity-10 sm:left-[calc(50%-30rem)] sm:w-[72.1875rem]" />
         </div>
-        <div className="w-full lg:w-[60%] mx-auto px-6">
+        <div className="w-full lg:w-[65%] mx-auto px-6">
           <motion.div
             initial="hidden"
             animate="visible"
@@ -237,7 +232,7 @@ const SingleCareerPage = () => {
             <motion.div variants={itemVariants}>
               <Link
                 to="/careers"
-                className="inline-flex items-center text-teal-600 hover:text-teal-800 transition-colors mb-6 group font-semibold"
+                className="inline-flex items-center text-[#1e88e5]/80 hover:text-[#1e88e5] transition-colors mb-6 group font-semibold"
               >
                 <FiArrowLeft className="mr-2 transition-transform group-hover:-translate-x-1" />
                 Back to all openings
@@ -254,20 +249,20 @@ const SingleCareerPage = () => {
               className="flex flex-wrap items-center gap-x-6 gap-y-2 text-slate-600"
             >
               <div className="flex items-center">
-                <FiBriefcase className="mr-2 text-teal-500" /> {job.department}
+                <FiBriefcase className="mr-2 text-[#1e88e5]" /> {job.department}
               </div>
               <div className="flex items-center">
-                <FiMapPin className="mr-2 text-teal-500" /> {job.location}
+                <FiMapPin className="mr-2 text-[#1e88e5]" /> {job.location}
               </div>
               <div className="flex items-center">
-                <FiClock className="mr-2 text-teal-500" /> {job.type}
+                <FiClock className="mr-2 text-[#1e88e5]" /> {job.type}
               </div>
             </motion.div>
           </motion.div>
         </div>
       </div>
 
-      <div className="w-full lg:w-[60%] mx-auto px-6 py-16 md:py-24">
+      <div className="w-full lg:w-[65%] mx-auto px-6 py-16 md:py-24">
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -387,7 +382,7 @@ const SingleCareerPage = () => {
                       <motion.button
                         type="submit"
                         disabled={status === 'submitting'}
-                        className="w-full bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-teal-700 transition-all duration-300 flex items-center justify-center disabled:bg-teal-400 disabled:cursor-not-allowed"
+                        className="w-full bg-[#1e88e5]/90 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-[#1e88e5] transition-all duration-300 flex items-center justify-center disabled:bg-[#1e88e5]/40 disabled:cursor-not-allowed"
                         whileHover={{
                           scale: status !== 'submitting' ? 1.03 : 1,
                           y: status !== 'submitting' ? -2 : 0,

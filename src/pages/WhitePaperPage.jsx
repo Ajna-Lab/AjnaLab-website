@@ -1,42 +1,7 @@
-import React from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
-import { FiDownload, FiArrowRight, FiBookOpen } from 'react-icons/fi'
-
-const resourcesData = [
-  {
-    id: 1,
-    type: 'Guide',
-    title: 'The Complete Guide to Hospital Digitalization',
-    description:
-      'A step-by-step PDF guide for administrators on planning and executing a successful digital transformation in their institution.',
-    slug: 'guide-hospital-digitalization',
-  },
-  {
-    id: 2,
-    type: 'Whitepaper',
-    title: 'Analyzing the ROI of Modern Clinic Software',
-    description:
-      'An in-depth analysis showcasing the financial and operational benefits of upgrading your clinic management system, backed by data.',
-    slug: 'whitepaper-roi-clinic-software',
-  },
-  {
-    id: 3,
-    type: 'Report',
-    title: 'The Future of Healthcare: Trends in 2025',
-    description:
-      'Explore emerging trends like AI, telemedicine, and patient portals that are shaping the next generation of healthcare technology.',
-    slug: 'report-future-of-healthcare-2025',
-  },
-  {
-    id: 4,
-    type: 'Guide',
-    title: 'A Guide to Cybersecurity in Healthcare',
-    description:
-      'Learn best practices and key technologies for safeguarding sensitive patient information and ensuring HIPAA compliance in the digital age.',
-    slug: 'guide-cybersecurity-in-healthcare',
-  },
-]
+import { FiDownload, FiBookOpen } from 'react-icons/fi'
+import { resourcesData } from '../data/whitepaperData'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -62,11 +27,11 @@ const WhitePaperPage = () => {
           initial="hidden"
           animate="visible"
           variants={containerVariants}
-          className="w-full lg:w-[60%] mx-auto px-6 text-center"
+          className="w-full lg:w-[65%] mx-auto px-6 text-center"
         >
           <motion.div
             variants={itemVariants}
-            className="inline-flex items-center justify-center bg-teal-50 text-teal-700 rounded-full p-2 mb-4"
+            className="inline-flex items-center justify-center bg-teal-50 text-[#1e88e5] rounded-full p-2 mb-4"
           >
             <FiBookOpen className="w-6 h-6" />
           </motion.div>
@@ -88,7 +53,7 @@ const WhitePaperPage = () => {
       </div>
 
       <div className="py-24 sm:py-32">
-        <div className="w-full lg:w-[60%] mx-auto px-6">
+        <div className="w-full lg:w-[65%] mx-auto px-6">
           <motion.div
             className="grid grid-cols-1 md:grid-cols-2 gap-8"
             initial="hidden"
@@ -102,7 +67,7 @@ const WhitePaperPage = () => {
                 variants={itemVariants}
                 className="bg-white rounded-2xl border border-slate-200/80 shadow-lg p-8 group flex flex-col hover:shadow-2xl hover:-translate-y-1 transition-all duration-300"
               >
-                <span className="text-sm font-semibold text-teal-600 mb-2">
+                <span className="text-sm font-semibold text-[#1e88e5] mb-2">
                   {resource.type}
                 </span>
                 <h2 className="text-2xl font-bold text-slate-900 mb-4 flex-grow">
@@ -114,7 +79,7 @@ const WhitePaperPage = () => {
                 <div className="mt-auto">
                   <Link to={`/download/${resource.slug}`}>
                     <motion.button
-                      className="bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-teal-700 transition-all inline-flex items-center"
+                      className="bg-[#1e88e5] text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-[#1e88e5] transition-all inline-flex items-center"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
@@ -129,7 +94,7 @@ const WhitePaperPage = () => {
       </div>
 
       <div className="bg-white py-20 sm:py-24">
-        <div className="w-full lg:w-[60%] mx-auto px-6 text-center">
+        <div className="w-full lg:w-[65%] mx-auto px-6 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -145,7 +110,7 @@ const WhitePaperPage = () => {
             <div className="mt-8">
               <Link to="/contact">
                 <motion.button
-                  className="bg-teal-600 text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-teal-700 transition-all"
+                  className="bg-[#1e88e5] text-white font-semibold py-3 px-6 rounded-lg shadow-md hover:bg-[#1e88e5] transition-all"
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
                 >

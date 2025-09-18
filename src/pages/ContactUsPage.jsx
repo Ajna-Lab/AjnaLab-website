@@ -63,7 +63,7 @@ const ContactUsPage = () => {
           animate="visible"
           className="bg-white/60 backdrop-blur-lg border-b border-slate-200/80 md:h-[35vh] h-[20vh] flex items-center"
         >
-          <div className="w-full lg:w-[60%] mx-auto px-6 text-center justify-center">
+          <div className="w-full lg:w-[65%] mx-auto px-6 text-center justify-center">
             <motion.h1
               variants={itemVariants}
               className="text-5xl md:text-7xl font-bold text-[#1e88e5] tracking-tighter"
@@ -82,7 +82,7 @@ const ContactUsPage = () => {
 
         {/* Main Content */}
         <div className="py-24">
-          <div className="w-full lg:w-[60%] mx-auto px-6">
+          <div className="w-full lg:w-[65%] mx-auto px-6">
             <motion.div
               variants={containerVariants}
               initial="hidden"

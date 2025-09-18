@@ -2,17 +2,9 @@ import React, { useState, useRef, useEffect } from 'react'
 import { motion, useInView, AnimatePresence } from 'framer-motion'
 import {
   FiArrowRight,
-  FiEye,
-  FiAward,
-  FiCompass,
-  FiHeart,
-  FiUsers,
   FiStar,
   FiChevronLeft,
   FiChevronRight,
-  FiCpu,
-  FiLayers,
-  FiShield,
 } from 'react-icons/fi'
 import { Users, Clipboard, Activity, Server, Cpu } from 'lucide-react'
 import { Swiper, SwiperSlide } from 'swiper/react'
@@ -26,8 +18,14 @@ import AboutImg from '../assets/ajna_without_text.png'
 import underline from '../assets/one.png'
 import CurveLine from '../assets/curve-blue.png'
 import { Link } from 'react-router-dom'
-import Solutions from '../components/layouts/Solutions'
 import SolutionsSection from '../components/layouts/SolutionsComponent'
+import {
+  valueThemes,
+  values,
+  testimonials,
+  clients,
+  gallery,
+} from '../data/homeData'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -54,139 +52,6 @@ const imageVariants = {
     transition: { type: 'spring', stiffness: 120, duration: 0.8 },
   },
 }
-
-const valueThemes = [
-  {
-    icon: FiAward,
-    title: 'Proven Expertise',
-    text: 'Years of experience building robust EMR, HMIS, and complex enterprise-grade systems for leading institutions.',
-    theme: {
-      borderColor: 'border-green-500',
-      textColor: 'text-green-500',
-      bgColor: 'bg-green-50',
-    },
-  },
-  {
-    icon: FiCompass,
-    title: 'Vision-Driven',
-    text: 'Guided by our HAT (Health, Agriculture, Technology) philosophy for sustainable and impactful innovation.',
-    theme: {
-      borderColor: 'border-yellow-500',
-      textColor: 'text-yellow-500',
-      bgColor: 'bg-yellow-50',
-    },
-  },
-  {
-    icon: FiUsers,
-    title: 'Trusted Partnerships',
-    text: 'We are committed to serving reputed institutions with the utmost integrity, building relationships that last.',
-    theme: {
-      borderColor: 'border-blue-500',
-      textColor: 'text-blue-500',
-      bgColor: 'bg-blue-50',
-    },
-  },
-  {
-    icon: FiHeart,
-    title: 'Human-Centered',
-    text: 'Our technology is meticulously designed to empower people and enhance workflows, not to overwhelm them.',
-    theme: {
-      borderColor: 'border-red-500',
-      textColor: 'text-red-500',
-      bgColor: 'bg-red-50',
-    },
-  },
-]
-
-const values = [
-  {
-    icon: FiCpu,
-    title: 'Innovation with Intuition',
-    description:
-      'We build forward-thinking technology that is not just powerful, but also intuitive and perfectly aligned with the needs of healthcare professionals.',
-  },
-  {
-    icon: FiLayers,
-    title: 'Simplicity with Scale',
-    description:
-      'Our solutions are designed to be simple and easy to use, yet robust enough to scale with the ambitions of a single clinic or a nationwide hospital network.',
-  },
-  {
-    icon: FiShield,
-    title: 'Impact with Integrity',
-    description:
-      'We are committed to making a real-world impact while operating with complete transparency, ensuring our partners and users can trust us implicitly.',
-  },
-]
-
-const testimonials = [
-  {
-    quote:
-      "Ajna hOS has completely transformed our hospital's workflow. The efficiency gains are remarkable, and the support team is always responsive and incredibly helpful.",
-    author: 'Dr. Ram Sharma',
-    title: 'Medical Director, City Hospital',
-    avatar: 'https://randomuser.me/api/portraits/men/11.jpg',
-  },
-  {
-    quote:
-      'The Clinic Care solution is perfect for our polyclinic. It’s intuitive for our staff, powerful in its features, and has significantly reduced our administrative overhead.',
-    author: 'Sita Rai',
-    title: 'Clinic Manager, HealWell Polyclinic',
-    avatar: 'https://randomuser.me/api/portraits/women/22.jpg',
-  },
-  {
-    quote:
-      'As a solo practitioner, Clinic Pro is a lifesaver. I can finally focus more on my patients and less on paperwork. I would highly recommend it to any small practice.',
-    author: 'Dr. Anjali Gurung',
-    title: 'General Practitioner',
-    avatar: 'https://randomuser.me/api/portraits/women/33.jpg',
-  },
-]
-
-const clients = [
-  {
-    name: 'Client 1',
-    logo: 'https://dursikshya.com/_next/image?url=%2FEsteemdPartners%2Flogo2.png&w=128&q=75',
-  },
-  { name: 'Client 2', logo: 'https://ajnalab.com/images/logo.png' },
-  {
-    name: 'Client 3',
-    logo: 'https://presidential.edu.np/file-manager/photos/1/logo.svg',
-  },
-  { name: 'Client 4', logo: 'https://ajnalab.com/images/logo.png' },
-  { name: 'Client 5', logo: 'https://via.placeholder.com/80' },
-  { name: 'Client 6', logo: 'https://via.placeholder.com/80' },
-  { name: 'Client 7', logo: 'https://via.placeholder.com/80' },
-  { name: 'Client 8', logo: 'https://via.placeholder.com/80' },
-  { name: 'Client 9', logo: 'https://via.placeholder.com/80' },
-]
-
-const gallery = [
-  {
-    src: 'https://images.unsplash.com/photo-1517048676732-d65bc937f952?w=800',
-    alt: 'Team meeting with laptops',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1552664730-d307ca884978?w=800',
-    alt: 'Team collaborating around a whiteboard',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800',
-    alt: 'People in a conference room',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1556761175-5973dc0f32e7?w=800',
-    alt: 'Two colleagues discussing work',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1587560699334-cc426240169f?w=800',
-    alt: 'Celebrating a team success',
-  },
-  {
-    src: 'https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800',
-    alt: 'Team members looking at a laptop',
-  },
-]
 
 const ValueCard = ({ number, title, text, theme, icon: Icon }) => (
   <div className="relative w-full max-w-sm mx-auto">
@@ -281,7 +146,7 @@ const HomePage = () => {
           />
           <div className="absolute inset-0 z-0 bg-[radial-gradient(ellipse_at_center,rgba(67,56,202,0.15),transparent_80%)]"></div>
 
-          <div className="w-full lg:w-[60%] mx-auto px-6 py-24 relative z-10">
+          <div className="w-full lg:w-[65%] mx-auto px-6 py-24 relative z-10">
             <motion.div
               className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
               variants={containerVariants}
@@ -382,7 +247,7 @@ const HomePage = () => {
 
         {/* About Ajna (Philosophy Highlight) */}
         <div className="bg-slate-50 py-24 sm:py-32 overflow-hidden">
-          <div className="w-full lg:w-[60%] mx-auto px-6">
+          <div className="w-full lg:w-[65%] mx-auto px-6">
             <motion.div
               className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
               initial="hidden"
@@ -477,7 +342,7 @@ const HomePage = () => {
               From Ideas to Impact
             </p>
           </div>
-          <div className="w-11/12 lg:w-4/5 xl:w-[70%] my-8 md:my-12 mx-auto relative px-2 sm:px-4">
+          <div className="w-11/12 lg:w-4/5 xl:w-[65%] my-8 md:my-12 mx-auto relative px-2 sm:px-4">
             <div className="absolute inset-0 flex justify-center items-center">
               <img
                 src={CurveLine}
@@ -517,7 +382,7 @@ const HomePage = () => {
 
         {/* Work Beyond Healthcare */}
         <div className="bg-slate-100 py-24 sm:py-32 overflow-hidden">
-          <div className="w-full lg:w-[60%] mx-auto px-6">
+          <div className="w-full lg:w-[65%] mx-auto px-6">
             <motion.div
               className="md:grid lg:grid-cols-2 gap-12 lg:gap-16 items-center"
               initial="hidden"
@@ -604,7 +469,7 @@ const HomePage = () => {
 
         {/* Vision & Values */}
         <div className="bg-slate-50 py-24 sm:py-32">
-          <div className="w-full lg:w-[60%] mx-auto px-6">
+          <div className="w-full lg:w-[65%] mx-auto px-6">
             <motion.div
               className="text-center max-w-4xl mx-auto"
               initial="hidden"
@@ -663,7 +528,7 @@ const HomePage = () => {
 
         {/* Testimonials */}
         <div className="bg-slate-100 py-24 sm:py-32">
-          <div className="w-full lg:w-[60%] mx-auto px-6">
+          <div className="w-full lg:w-[65%] mx-auto px-6">
             <motion.div
               className="text-center max-w-3xl mx-auto"
               initial="hidden"
@@ -768,7 +633,7 @@ const HomePage = () => {
         </div>
 
         <div className="bg-white py-24 sm:py-32">
-          <div className="w-full lg:w-[60%] mx-auto px-6">
+          <div className="w-full lg:w-[65%] mx-auto px-6">
             <motion.div
               className="text-center max-w-3xl mx-auto"
               initial="hidden"
@@ -869,7 +734,7 @@ const HomePage = () => {
         <div className="relative bg-slate-900 py-24 sm:py-32 overflow-hidden">
           <div className="absolute inset-0 bg-grid-slate-700/10 [mask-image:linear-gradient(to_bottom,white,transparent)]"></div>
 
-          <div className="w-full lg:w-[60%] mx-auto px-6 text-center relative z-10">
+          <div className="w-full lg:w-[65%] mx-auto px-6 text-center relative z-10">
             <motion.div
               className="max-w-4xl mx-auto"
               initial="hidden"

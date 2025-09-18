@@ -1,18 +1,9 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import {
-  FiArrowRight,
-  FiBriefcase,
-  FiHome,
-  FiTrendingUp,
-  FiHeart,
-  FiCoffee,
-  FiUsers,
-  FiAward,
-  FiCompass,
-} from 'react-icons/fi'
+import { FiArrowRight } from 'react-icons/fi'
 import Caeerimg from '../assets/career.png'
 import { Link } from 'react-router-dom'
+import { values, perks, openings } from '../data/careerData'
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -43,82 +34,6 @@ const letterVariants = {
     },
   }),
 }
-
-// Data
-const values = [
-  {
-    icon: FiAward,
-    title: 'Proven Expertise',
-    text: 'Years of building EMR, HMIS, and enterprise systems that deliver tangible results.',
-    theme: 'teal',
-  },
-  {
-    icon: FiCompass,
-    title: 'Vision-Driven',
-    text: 'Guided by a clear vision for the future of healthcare technology.',
-    theme: 'sky',
-  },
-  {
-    icon: FiUsers,
-    title: 'Trusted Partnerships',
-    text: 'We build lasting relationships with reputed institutions based on integrity and trust.',
-    theme: 'indigo',
-  },
-  {
-    icon: FiHeart,
-    title: 'Human-Centered',
-    text: 'Technology designed to empower, not overwhelm, keeping people at the core.',
-    theme: 'rose',
-  },
-]
-
-const perks = {
-  'Work & Life Balance': [
-    {
-      icon: FiHome,
-      title: 'Hybrid Work Model',
-      text: 'Enjoy the flexibility to work from the office or home, tailored to your role and team needs.',
-    },
-    {
-      icon: FiCoffee,
-      title: 'Gourmet Meals & Snacks',
-      text: 'Stay energized with healthy, delicious lunches and snacks served fresh every day.',
-    },
-  ],
-  'Growth & Development': [
-    {
-      icon: FiTrendingUp,
-      title: 'Continuous Learning',
-      text: 'Get access to premium courses, workshops, and conferences to sharpen your skills.',
-    },
-    {
-      icon: FiBriefcase,
-      title: 'Clear Career Paths',
-      text: 'We provide clear growth trajectories and dedicated mentorship to help you achieve your goals.',
-    },
-  ],
-}
-
-const openings = [
-  {
-    id: 1,
-    title: 'Senior Engineering Manager',
-    location: 'Kathmandu, Nepal',
-    type: 'Full-time',
-  },
-  {
-    id: 2,
-    title: 'Senior Data Engineer',
-    location: 'Kathmandu, Nepal',
-    type: 'Full-time',
-  },
-  {
-    id: 3,
-    title: 'Lead AI Engineer',
-    location: 'Kathmandu, Nepal',
-    type: 'Full-time',
-  },
-]
 
 const AnimatedTitle = ({ text, className }) => {
   const words = text.split(' ')
@@ -160,14 +75,14 @@ const HeroSection = () => (
         }}
       />
     </div>
-    <div className="w-full lg:w-[60%] mx-auto px-6">
+    <div className="w-full lg:w-[65%] mx-auto px-6">
       <div className="grid md:grid-cols-2 gap-12 lg:gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, ease: 'easeOut' }}
         >
-          <h2 className="text-base text-teal-600 font-semibold uppercase tracking-wider mb-4">
+          <h2 className="text-base text-[#1e88e5] font-semibold uppercase tracking-wider mb-4">
             Join Our Team
           </h2>
           <AnimatedTitle
@@ -184,7 +99,7 @@ const HeroSection = () => (
               href="#currentOpenings"
               whileHover={{ scale: 1.05, y: -2 }}
               whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center justify-center rounded-lg bg-teal-600 px-6 py-3 text-base font-semibold text-white shadow-lg hover:bg-teal-700 transition-all"
+              className="inline-flex items-center justify-center rounded-lg bg-[#1e88e5] px-6 py-3 text-base font-semibold text-white shadow-lg hover:bg-[#1e88e5] transition-all"
             >
               View Open Positions <FiArrowRight className="ml-2" />
             </motion.a>
@@ -239,7 +154,7 @@ const ValueCard = ({ icon: Icon, title, text, theme }) => {
 
 const ValuesSection = () => (
   <section className="py-24 sm:py-32 bg-slate-50">
-    <div className="w-full lg:w-[60%] mx-auto px-6">
+    <div className="w-full lg:w-[65%] mx-auto px-6">
       <motion.div
         className="text-center max-w-3xl mx-auto mb-16"
         initial="hidden"
@@ -281,7 +196,7 @@ const PerksAndBenefits = () => {
 
   return (
     <section className="py-24 sm:py-32 bg-white">
-      <div className="w-full lg:w-[60%] mx-auto px-6">
+      <div className="w-full lg:w-[65%] mx-auto px-6">
         <motion.div
           className="text-center max-w-3xl mx-auto mb-16"
           initial="hidden"
@@ -321,7 +236,7 @@ const PerksAndBenefits = () => {
                     <span
                       className={`relative z-10 transition-colors ${
                         activeTab === tab
-                          ? 'text-teal-700'
+                          ? 'text-[#1e88e5]'
                           : 'text-slate-600 hover:text-slate-900'
                       }`}
                     >
@@ -347,7 +262,7 @@ const PerksAndBenefits = () => {
                     key={perk.title}
                     className="bg-slate-50 p-6 rounded-xl border border-slate-200/80"
                   >
-                    <div className="text-teal-500 mb-4">
+                    <div className="text-[#1e88e5] mb-4">
                       <perk.icon size={32} />
                     </div>
                     <h3 className="text-lg font-bold text-slate-900 mb-2">
@@ -369,7 +284,7 @@ const PerksAndBenefits = () => {
 
 const OpeningsSection = () => (
   <section id="currentOpenings" className="py-24 sm:py-32 bg-slate-50">
-    <div className="w-full lg:w-[60%] mx-auto px-6">
+    <div className="w-full lg:w-[65%] mx-auto px-6">
       <motion.div
         className="text-center max-w-3xl mx-auto mb-16"
         initial="hidden"
@@ -401,9 +316,9 @@ const OpeningsSection = () => (
             transition={{ duration: 0.5, delay: index * 0.1, ease: 'easeOut' }}
           >
             <Link to={`/career/${job.id}`} className="block group">
-              <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200/80 flex flex-col md:flex-row items-start md:items-center justify-between transition-all duration-300 group-hover:shadow-lg group-hover:border-teal-300 group-hover:-translate-y-1">
+              <div className="bg-white p-6 rounded-xl shadow-sm border border-slate-200/80 flex flex-col md:flex-row items-start md:items-center justify-between transition-all duration-300 group-hover:shadow-lg group-hover:border-[#1e88e5] group-hover:-translate-y-1">
                 <div className="mb-4 md:mb-0">
-                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-teal-700 transition-colors">
+                  <h3 className="text-xl font-bold text-slate-900 group-hover:text-[#1e88e5] transition-colors">
                     {job.title}
                   </h3>
                   <div className="flex items-center gap-4 text-slate-500 mt-2">
@@ -412,7 +327,7 @@ const OpeningsSection = () => (
                     <span>{job.type}</span>
                   </div>
                 </div>
-                <div className="flex items-center text-teal-600 font-semibold transition-transform duration-300 group-hover:translate-x-1">
+                <div className="flex items-center text-[#1e88e5] font-semibold transition-transform duration-300 group-hover:translate-x-1">
                   Apply Now <FiArrowRight className="ml-2" />
                 </div>
               </div>

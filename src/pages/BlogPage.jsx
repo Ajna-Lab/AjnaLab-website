@@ -158,7 +158,7 @@ const BlogPage = () => {
   return (
     <div className="py-24 sm:py-32 bg-gray-50 ">
       <header className="bg-white">
-        <div className="w-full lg:w-[60%] mx-auto py-16 px-4 text-center">
+        <div className="w-full lg:w-[65%] mx-auto py-16 px-4 text-center">
           <motion.h1
             initial={{ y: 20, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
@@ -180,7 +180,7 @@ const BlogPage = () => {
       </header>
 
       <main className="py-20">
-        <div className="w-full lg:w-[60%] mx-auto px-4">
+        <div className="w-full lg:w-[65%] mx-auto px-4">
           <section id="blog">
             <motion.div
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10"

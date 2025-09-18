@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { motion, useScroll, useTransform, AnimatePresence } from 'framer-motion'
 import { Users, Clipboard, Activity, Server, Cpu } from 'lucide-react'
-
+import { FiArrowRight } from 'react-icons/fi'
 const solutions = [
   {
     id: 1,
@@ -89,14 +89,14 @@ const SolutionsSection = () => {
     })
   }, [scrollYProgress])
 
-  const scrollbarY = useTransform(scrollYProgress, [0, 1], ['0%', '80%']) 
+  const scrollbarY = useTransform(scrollYProgress, [0, 1], ['0%', '80%'])
 
   return (
-    <div className="bg-slate-900 text-white font-sans py-24 sm:py-32">
-      <div className="container md:w-[60%] mx-auto px-6">
-        <h3 className="text-4xl md:text-5xl font-extrabold text-center">
+    <div className="bg-indigo-700/2 text-white font-sans py-24 sm:py-32">
+      <div className="container md:w-[65%] mx-auto px-6">
+        <h3 className="text-4xl md:text-5xl text-indigo-500 font-extrabold text-center">
           Our Suite of{' '}
-          <span className="text-indigo-400">Healthcare Solutions</span>
+          <span className="text-[#1e3a8a]">Healthcare Solutions</span>
         </h3>
 
         <div ref={scrollRef} className="hidden lg:flex mt-24 relative">
@@ -118,10 +118,19 @@ const SolutionsSection = () => {
                   animate={{ opacity: activeIndex === index ? 1 : 0.2 }}
                   transition={{ duration: 0.5 }}
                 >
-                  <h4 className="text-3xl font-bold">{solution.title}</h4>
-                  <p className="text-slate-300 mt-4 leading-relaxed">
+                  <h4 className="text-3xl text-indigo-700 font-bold">
+                    {solution.title}
+                  </h4>
+                  <p className="text-indigo-700 mt-4 leading-relaxed">
                     {solution.description}
                   </p>
+                  <motion.button
+                    whileHover={{ scale: 1.1 }}
+                    whileTap={{ scale: 0.9 }}
+                    className="mt-6 bg-indigo-600 hover:bg-indigo-500 text-white font-semibold py-2 px-4 rounded-lg shadow-md inline-flex items-center"
+                  >
+                    Book A Demo <FiArrowRight className="ml-2" />
+                  </motion.button>
                 </motion.div>
               </div>
             ))}

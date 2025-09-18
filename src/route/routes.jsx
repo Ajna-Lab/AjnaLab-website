@@ -1,9 +1,7 @@
-import React from 'react'
 import { Routes, Route } from 'react-router-dom'
 import App from '../App'
 import HomePage from '../pages/HomePage'
 import AboutPage from '../pages/AboutPage'
-import HealthcareSolutionsPage from '../pages/HealthcareSolutionsPage'
 import BookDemoPage from '../pages/BookDemoPage'
 import BlogPage from '../pages/BlogPage'
 import PageNotFound from '../pages/PageNotFound'
@@ -29,10 +27,6 @@ function AppRoutes() {
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route
-          path="/healthcare-solutions"
-          element={<HealthcareSolutionsPage />}
-        />
         <Route path="/book-a-demo" element={<BookDemoPage />} />
         <Route path="/blog" element={<BlogPage />} />
         <Route path="/blog/:slug" element={<SingleBlogPage />} />
